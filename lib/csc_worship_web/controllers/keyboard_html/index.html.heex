@@ -1,0 +1,25 @@
+<.header>
+  Listing Keyboards
+  <:actions>
+    <.link href={~p"/keyboards/new"}>
+      <.button>New Keyboard</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="keyboards" rows={@keyboards} row_click={&JS.navigate(~p"/keyboards/#{&1}")}>
+  <:col :let={keyboard} label="Name"><%= keyboard.name %></:col>
+  <:col :let={keyboard} label="Dates Unavaliable"><%= for x <- keyboard.dates_avaliable, do: to_string(x) <> ", " %></:col>
+  <:col :let={keyboard} label="Email"><%= keyboard.email %></:col>
+  <:action :let={keyboard}>
+    <div class="sr-only">
+      <.link navigate={~p"/keyboards/#{keyboard}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/keyboards/#{keyboard}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={keyboard}>
+    <.link href={~p"/keyboards/#{keyboard}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

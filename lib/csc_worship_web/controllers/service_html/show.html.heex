@@ -1,0 +1,22 @@
+<.header>
+  Service <%= @service.id %>
+  <:subtitle>This is a service record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/services/#{@service}/edit"}>
+      <.button>Edit service</.button>
+    </.link>
+  </:actions>
+</.header>
+<%!-- <%= email = CscWorship.Email.volunteer_notification_email(%{name: "Tony Stark", email: "cr-clair@wiu.edu"})
+CscWorship.Mailer.deliver(email) %> --%>
+<.list>
+  <:item title="Songs"><%= @service.songs %></:item>
+  <:item title="Notes"><%= @service.notes %></:item>
+  <:item title="Submitter"><%= @service.submitter %></:item>
+  <:item title="Rehearsal time1"><%= @service.rehearsal_time1 %></:item>
+  <:item title="Rehearsal time 2"><%= @service.rehearsal_time_2 %></:item>
+  <:item title="Drummer"> <%= @service.drummers.name %> </:item>
+  <:item title="Date"><%= @service.date %></:item>
+</.list>
+
+<.back navigate={~p"/services"}>Back to services</.back>

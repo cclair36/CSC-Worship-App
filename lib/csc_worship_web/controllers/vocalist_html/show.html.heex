@@ -1,0 +1,17 @@
+<.header>
+  Vocalist <%= @vocalist.id %>
+  <:subtitle>This is a vocalist record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/vocalists/#{@vocalist}/edit"}>
+      <.button>Edit vocalist</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @vocalist.name %></:item>
+  <:item title="Dates Unavaliable"><%= for x <- @vocalist.dates_avaliable, do: to_string(x) <> ", "  %></:item>
+  <:item title="Email"><%= @vocalist.email %></:item>
+</.list>
+
+<.back navigate={~p"/vocalists"}>Back to vocalists</.back>

@@ -1,0 +1,23 @@
+<.header>
+  Listing Submitter autocomplete
+  <:actions>
+    <.link href={~p"/submitter_autocomplete/new"}>
+      <.button>New Submitter autocomplete</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="submitter_autocomplete" rows={@submitter_autocomplete_collection} row_click={&JS.navigate(~p"/submitter_autocomplete/#{&1}")}>
+  <:col :let={submitter_autocomplete} label="Name"><%= submitter_autocomplete.name %></:col>
+  <:action :let={submitter_autocomplete}>
+    <div class="sr-only">
+      <.link navigate={~p"/submitter_autocomplete/#{submitter_autocomplete}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/submitter_autocomplete/#{submitter_autocomplete}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={submitter_autocomplete}>
+    <.link href={~p"/submitter_autocomplete/#{submitter_autocomplete}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

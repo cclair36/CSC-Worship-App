@@ -1,0 +1,17 @@
+<.header>
+  Electric <%= @electric.id %>
+  <:subtitle>This is a electric record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/el_guitar/#{@electric}/edit"}>
+      <.button>Edit electric</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @electric.name %></:item>
+  <:item title="Dates Unavaliable"><%= for x <- @electric.dates_avaliable, do: to_string(x) <> ", " %></:item>
+  <:item title="Email"><%= @electric.email %></:item>
+</.list>
+
+<.back navigate={~p"/el_guitar"}>Back to el_guitar</.back>

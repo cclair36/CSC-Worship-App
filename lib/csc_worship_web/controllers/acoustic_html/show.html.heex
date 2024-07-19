@@ -1,0 +1,17 @@
+<.header>
+  Acoustic <%= @acoustic.id %>
+  <:subtitle>This is a acoustic record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/ac_guitar/#{@acoustic}/edit"}>
+      <.button>Edit acoustic</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @acoustic.name %></:item>
+  <:item title="Dates Unavaliable"><%= for x <- @acoustic.dates_avaliable, do: to_string(x) <> ", " %></:item>
+  <:item title="Email"><%= @acoustic.email %></:item>
+</.list>
+
+<.back navigate={~p"/ac_guitar"}>Back to ac_guitar</.back>

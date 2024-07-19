@@ -1,0 +1,25 @@
+<.header>
+  Listing Vocalists
+  <:actions>
+    <.link href={~p"/vocalists/new"}>
+      <.button>New Vocalist</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="vocalists" rows={@vocalists} row_click={&JS.navigate(~p"/vocalists/#{&1}")}>
+  <:col :let={vocalist} label="Name"><%= vocalist.name %></:col>
+  <:col :let={vocalist} label="Dates Unavaliable"><%= for x <- vocalist.dates_avaliable, do: to_string(x) <> ", "  %></:col>
+  <:col :let={vocalist} label="Email"><%= vocalist.email %></:col>
+  <:action :let={vocalist}>
+    <div class="sr-only">
+      <.link navigate={~p"/vocalists/#{vocalist}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/vocalists/#{vocalist}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={vocalist}>
+    <.link href={~p"/vocalists/#{vocalist}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

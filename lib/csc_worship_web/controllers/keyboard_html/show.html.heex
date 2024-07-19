@@ -1,0 +1,17 @@
+<.header>
+  Keyboard <%= @keyboard.id %>
+  <:subtitle>This is a keyboard record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/keyboards/#{@keyboard}/edit"}>
+      <.button>Edit keyboard</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @keyboard.name %></:item>
+  <:item title="Dates Unavaliable"><%=  for x <- @keyboard.dates_avaliable, do: to_string(x) <> ", "%></:item>
+  <:item title="Email"><%= @keyboard.email %></:item>
+</.list>
+
+<.back navigate={~p"/keyboards"}>Back to keyboards</.back>

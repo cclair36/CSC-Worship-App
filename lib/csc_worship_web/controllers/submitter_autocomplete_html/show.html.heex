@@ -1,0 +1,15 @@
+<.header>
+  Submitter autocomplete <%= @submitter_autocomplete.id %>
+  <:subtitle>This is a submitter_autocomplete record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/submitter_autocomplete/#{@submitter_autocomplete}/edit"}>
+      <.button>Edit submitter_autocomplete</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @submitter_autocomplete.name %></:item>
+</.list>
+
+<.back navigate={~p"/submitter_autocomplete"}>Back to submitter_autocomplete</.back>

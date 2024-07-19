@@ -1,0 +1,18 @@
+<.header>
+  Bassist <%= @bassist.id %>
+  <:subtitle>This is a bassist record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/bassists/#{@bassist}/edit"}>
+      <.button>Edit bassist</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @bassist.name %></:item>
+  <:item title="Dates unavailable"><%= @bassist.dates_unavailable %></:item>
+  <:item title="Email"><%= @bassist.email %></:item>
+  <:item title="Times used"><%= @bassist.times_used %></:item>
+</.list>
+
+<.back navigate={~p"/bassists"}>Back to bassists</.back>

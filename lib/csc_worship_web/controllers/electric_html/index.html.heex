@@ -1,0 +1,25 @@
+<.header>
+  Listing El guitar
+  <:actions>
+    <.link href={~p"/el_guitar/new"}>
+      <.button>New Electric</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="el_guitar" rows={@el_guitar} row_click={&JS.navigate(~p"/el_guitar/#{&1}")}>
+  <:col :let={electric} label="Name"><%= electric.name %></:col>
+  <:col :let={electric} label="Dates Unavaliable"><%= for x <- electric.dates_avaliable, do: to_string(x) <> ", "%></:col>
+  <:col :let={electric} label="Email"><%= electric.email %></:col>
+  <:action :let={electric}>
+    <div class="sr-only">
+      <.link navigate={~p"/el_guitar/#{electric}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/el_guitar/#{electric}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={electric}>
+    <.link href={~p"/el_guitar/#{electric}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

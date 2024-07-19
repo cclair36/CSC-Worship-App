@@ -1,0 +1,8 @@
+<.header>
+  Edit Submitter autocomplete <%= @submitter_autocomplete.id %>
+  <:subtitle>Use this form to manage submitter_autocomplete records in your database.</:subtitle>
+</.header>
+
+<.submitter_autocomplete_form changeset={@changeset} action={~p"/submitter_autocomplete/#{@submitter_autocomplete}"} />
+
+<.back navigate={~p"/submitter_autocomplete"}>Back to submitter_autocomplete</.back>

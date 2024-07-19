@@ -1,0 +1,17 @@
+<.header>
+  Slide <%= @slide.id %>
+  <:subtitle>This is a slide record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/slides/#{@slide}/edit"}>
+      <.button>Edit slide</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @slide.name %></:item>
+  <:item title="Dates Unavaliable"><%= for x <- @slide.dates_avaliable, do: to_string(x) <> ", " %></:item>
+  <:item title="Email"><%= @slide.email %></:item>
+</.list>
+
+<.back navigate={~p"/slides"}>Back to slides</.back>

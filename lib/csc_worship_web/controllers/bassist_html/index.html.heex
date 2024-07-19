@@ -1,0 +1,26 @@
+<.header>
+  Listing Bassists
+  <:actions>
+    <.link href={~p"/bassists/new"}>
+      <.button>New Bassist</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="bassists" rows={@bassists} row_click={&JS.navigate(~p"/bassists/#{&1}")}>
+  <:col :let={bassist} label="Name"><%= bassist.name %></:col>
+  <:col :let={bassist} label="Dates unavailable"><%= bassist.dates_unavailable %></:col>
+  <:col :let={bassist} label="Email"><%= bassist.email %></:col>
+  <:col :let={bassist} label="Times used"><%= bassist.times_used %></:col>
+  <:action :let={bassist}>
+    <div class="sr-only">
+      <.link navigate={~p"/bassists/#{bassist}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/bassists/#{bassist}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={bassist}>
+    <.link href={~p"/bassists/#{bassist}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

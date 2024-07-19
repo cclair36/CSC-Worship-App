@@ -1,0 +1,17 @@
+<.header>
+  Speaker <%= @speaker.id %>
+  <:subtitle>This is a speaker record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/speakers/#{@speaker}/edit"}>
+      <.button>Edit speaker</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @speaker.name %></:item>
+  <:item title="Dates preaching"><%= @speaker.dates_preaching %></:item>
+  <:item title="Email"><%= @speaker.email %></:item>
+</.list>
+
+<.back navigate={~p"/speakers"}>Back to speakers</.back>

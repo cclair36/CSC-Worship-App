@@ -1,0 +1,8 @@
+<.header>
+  Edit Keyboard <%= @keyboard.id %>
+  <:subtitle>Use this form to manage keyboard records in your database.</:subtitle>
+</.header>
+
+<.keyboard_form changeset={@changeset} action={~p"/keyboards/#{@keyboard}"} />
+
+<.back navigate={~p"/keyboards"}>Back to keyboards</.back>

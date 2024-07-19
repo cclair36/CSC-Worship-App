@@ -1,0 +1,25 @@
+<.header>
+  Listing Slides
+  <:actions>
+    <.link href={~p"/slides/new"}>
+      <.button>New Slide</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="slides" rows={@slides} row_click={&JS.navigate(~p"/slides/#{&1}")}>
+  <:col :let={slide} label="Name"><%= slide.name %></:col>
+  <:col :let={slide} label="Dates Unavaliable"><%= for x <- slide.dates_avaliable, do: to_string(x) <> ", "  %></:col>
+  <:col :let={slide} label="Email"><%= slide.email %></:col>
+  <:action :let={slide}>
+    <div class="sr-only">
+      <.link navigate={~p"/slides/#{slide}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/slides/#{slide}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={slide}>
+    <.link href={~p"/slides/#{slide}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

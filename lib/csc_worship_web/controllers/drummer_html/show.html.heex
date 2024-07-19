@@ -1,0 +1,19 @@
+<.header>
+  Drummer <%= @drummer.id %>
+  <:subtitle>This is a drummer record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/drummers/#{@drummer}/edit"}>
+      <.button>Edit drummer</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @drummer.name %></:item>
+  <:item title="Dates Unavailable"><%= Enum.map(@drummer.dates_avaliable, fn x -> 
+  to_string(x) <> ", "
+  end) %></:item>
+  <:item title="Cajon only"><%= @drummer.cajon_only %></:item>
+</.list>
+
+<.back navigate={~p"/drummers"}>Back to drummers</.back>

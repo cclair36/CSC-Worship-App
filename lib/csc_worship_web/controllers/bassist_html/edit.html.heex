@@ -1,0 +1,8 @@
+<.header>
+  Edit Bassist <%= @bassist.id %>
+  <:subtitle>Use this form to manage bassist records in your database.</:subtitle>
+</.header>
+
+<.bassist_form changeset={@changeset} action={~p"/bassists/#{@bassist}"} />
+
+<.back navigate={~p"/bassists"}>Back to bassists</.back>

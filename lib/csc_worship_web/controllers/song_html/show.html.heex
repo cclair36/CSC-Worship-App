@@ -1,0 +1,19 @@
+<.header>
+  Song <%= @song.id %>
+  <:subtitle>This is a song record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/songs/#{@song}/edit"}>
+      <.button>Edit song</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @song.name %></:item>
+  <:item title="Artist"><%= @song.artist %></:item>
+  <:item title="Songselect"><%= @song.songselect %></:item>
+  <:item title="Youtube"><%= @song.youtube %></:item>
+  <:item title="Type"><%= @song.type %></:item>
+</.list>
+
+<.back navigate={~p"/songs"}>Back to songs</.back>

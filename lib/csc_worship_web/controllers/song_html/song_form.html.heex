@@ -1,0 +1,13 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:artist]} type="text" label="Artist" />
+  <.input field={f[:songselect]} type="text" label="Songselect" />
+  <.input field={f[:youtube]} type="text" label="Youtube" />
+  <.input field={f[:type]} type="text" label="Type" />
+  <:actions>
+    <.button>Save Song</.button>
+  </:actions>
+</.simple_form>

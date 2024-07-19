@@ -1,0 +1,27 @@
+<.header>
+  Listing Drummers
+  <:actions>
+    <.link href={~p"/drummers/new"}>
+      <.button>New Drummer</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="drummers" rows={@drummers} row_click={&JS.navigate(~p"/drummers/#{&1}")}>
+  <:col :let={drummer} label="Name"><%= drummer.name %></:col>
+  <:col :let={drummer} label="Dates Unavailable"><%= Enum.map(drummer.dates_avaliable, fn x -> 
+  to_string(x) <> ", "
+  end) %></:col>
+  <:col :let={drummer} label="Cajon only"><%= drummer.cajon_only %></:col>
+  <:action :let={drummer}>
+    <div class="sr-only">
+      <.link navigate={~p"/drummers/#{drummer}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/drummers/#{drummer}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={drummer}>
+    <.link href={~p"/drummers/#{drummer}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

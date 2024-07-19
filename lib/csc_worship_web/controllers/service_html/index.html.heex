@@ -1,0 +1,39 @@
+<.header>
+  Listing Services
+  <:actions>
+    <.link href={~p"/services/new"}>
+      <.button>New Service</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="services" rows={@services} row_click={&JS.navigate(~p"/services/#{&1}")}>
+  <:col :let={service} label="Date"><%= service.date %></:col>
+  <:col :let={service} label="Songs"><%=
+   service.songs %></:col>
+  <:col :let={service} label= "Speaker"> <%= service.speakers.name %> </:col>
+  <:col :let={service} label="Notes"><%= service.notes %></:col>
+  <:col :let={service} label="Drummer"><%= if service.drummers != nil, do: service.drummers.name %></:col>
+  <:col :let={service} label="Keys"><%= if service.keyboards != nil, do: service.keyboards.name %></:col>
+  <:col :let={service} label="Vocalist"><%= if service.vocalists1 != nil, do: service.vocalists1.name %></:col>
+  <:col :let={service} label="Vocalist"><%= if service.vocalists2 != nil, do: service.vocalists2.name %></:col>
+  <:col :let={service} label="Vocalist"><%= if service.vocalists3 != nil, do: service.vocalists3.name %></:col>
+  <:col :let={service} label="Vocalist"><%= if service.vocalists4 != nil, do: service.vocalists4.name %></:col>
+  <:col :let={service} label="Electric/Lead"><%= if service.electrics != nil, do: service.electrics.name %></:col>
+  <:col :let={service} label="Acoustic"><%= if service.acoustics != nil, do: service.acoustics.name %></:col>
+  <:col :let={service} label="Slides"><%= if service.slide != nil, do: service.slide.name %></:col>
+  <:col :let={service} label="Sound"><%= if service.sounds != nil, do: service.sounds.name %></:col>
+  <:col :let={service} label="First Rehearsal"><%= service.rehearsal_time1 %></:col>
+  <:col :let={service} label="Sunday Rehearsal"><%= service.rehearsal_time_2 %></:col>
+  <:action :let={service}>
+    <div class="sr-only">
+      <.link navigate={~p"/services/#{service}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/services/#{service}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={service}>
+    <.link href={~p"/services/#{service}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>
