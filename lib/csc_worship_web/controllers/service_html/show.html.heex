@@ -10,13 +10,23 @@
 <%!-- <%= email = CscWorship.Email.volunteer_notification_email(%{name: "Tony Stark", email: "cr-clair@wiu.edu"})
 CscWorship.Mailer.deliver(email) %> --%>
 <.list>
-  <:item title="Songs"><%= @service.songs %></:item>
-  <:item title="Notes"><%= @service.notes %></:item>
+  <:item title="Date"><%= String.slice(to_string(@service.date), 5..7) <> String.slice(to_string(@service.date), 8..9) <> "-" <> String.slice(to_string(@service.date), 0..3) %></:item>
+  <:item title="Songs"><%= if @service.songs == nil, do: "N/A", else: @service.songs %></:item>
+  <:item title="Speaker"> <%= if @service.speakers == nil, do: "N/A", else: @service.speakers.name %> </:item>
   <:item title="Submitter"><%= @service.submitter %></:item>
-  <:item title="Rehearsal time1"><%= @service.rehearsal_time1 %></:item>
-  <:item title="Rehearsal time 2"><%= @service.rehearsal_time_2 %></:item>
-  <:item title="Drummer"> <%= @service.drummers.name %> </:item>
-  <:item title="Date"><%= @service.date %></:item>
+  <:item title="Rehearsal time1"><%= String.slice(to_string(@service.rehearsal_time1), 5..7) <> String.slice(to_string(@service.rehearsal_time1), 8..9) <> "-" <> String.slice(to_string(@service.rehearsal_time1), 0..3) <> " at " <> String.slice(to_string(@service.rehearsal_time1), 11..13) <> String.slice(to_string(@service.rehearsal_time1), 14..15) <> String.slice(to_string(@service.rehearsal_time1), 16..18)%> </:item>
+  <:item title="Rehearsal time 2"><%= String.slice(to_string(@service.rehearsal_time_2), 5..7) <> String.slice(to_string(@service.rehearsal_time_2), 8..9) <> "-" <> String.slice(to_string(@service.rehearsal_time_2), 0..3) <> " at " <> String.slice(to_string(@service.rehearsal_time_2), 11..13) <> String.slice(to_string(@service.rehearsal_time_2), 14..15) <> String.slice(to_string(@service.rehearsal_time_2), 16..18)%> </:item>
+  <:item title="Drummer"> <%= if @service.drummer == nil, do: "N/A", else: @service.drummers.name%> </:item>
+  <:item title="Acoustic"> <%= if @service.acoustics == nil, do: "N/A", else: @service.acoustics.name %> </:item>
+  <:item title="Electric/Lead"> <%= if @service.electrics == nil, do: "N/A", else: @service.electrics.name %> </:item>
+  <:item title="Keys"> <%= if @service.keyboards == nil, do: "N/A", else: @service.keyboards.name %> </:item>
+  <:item title="Vocalist 1"> <%= if @service.vocalists1 == nil, do: "N/A", else: @service.vocalists1.name %> </:item>
+  <:item title="Vocalist 2"> <%= if @service.vocalists2 == nil, do: "N/A", else: @service.vocalists2.name %> </:item>
+  <:item title="Vocalist 3"> <%= if @service.vocalists3 == nil, do: "N/A", else: @service.vocalists3.name %> </:item>
+  <:item title="Vocalist 4"> <%= if @service.vocalists4 == nil, do: "N/A", else: @service.vocalists4.name %> </:item>
+  <:item title="Slides"> <%= if @service.slide == nil, do: "N/A", else: @service.slide.name %> </:item>
+  <:item title="Sound"> <%= if @service.sounds == nil, do: "N/A", else: @service.sounds.name %> </:item>
+  <:item title="Notes"><%= @service.notes %></:item>
 </.list>
 
 <.back navigate={~p"/services"}>Back to services</.back>

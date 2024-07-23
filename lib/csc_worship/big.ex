@@ -20,7 +20,7 @@ defmodule CscWorship.Big do
   """
   def list_services do
     p = Repo.all(Service)
-    Repo.preload(p, [:drummers, :keyboards, :acoustics, :electrics, :sounds, :slide, :vocalists1, :vocalists2, :vocalists3, :vocalists4, :speakers])
+    Repo.preload(p, [:drummers, :keyboards, :acoustics, :electrics, :sounds, :slide, :vocalists1, :vocalists2, :vocalists3, :vocalists4, :speakers, :bassist])
   end
 
   @doc """
@@ -39,7 +39,7 @@ defmodule CscWorship.Big do
   """
   def get_service!(id) do
   p = Repo.get!(Service, id)
-  Repo.preload(p, [:drummers, :keyboards, :acoustics, :electrics, :sounds, :slide, :vocalists1, :vocalists2, :vocalists3, :vocalists4, :speakers])
+  Repo.preload(p, [:drummers, :keyboards, :acoustics, :electrics, :sounds, :slide, :vocalists1, :vocalists2, :vocalists3, :vocalists4, :speakers, :bassist])
   end
 
   def list_service_dates() do
@@ -62,6 +62,10 @@ defmodule CscWorship.Big do
     %Service{}
     |> Service.changeset(attrs)
     |> Repo.insert()
+    |> case do
+      {:ok, post} -> {:ok, Repo.preload(post, [:drummers, :keyboards, :acoustics, :electrics, :sounds, :slide, :vocalists1, :vocalists2, :vocalists3, :vocalists4, :speakers, :bassist])}
+      error -> error
+    end
   end
 
   @doc """

@@ -25,6 +25,8 @@
   <:col :let={service} label="Sound"><%= if service.sounds != nil, do: service.sounds.name %></:col>
   <:col :let={service} label="First Rehearsal"><%= service.rehearsal_time1 %></:col>
   <:col :let={service} label="Sunday Rehearsal"><%= service.rehearsal_time_2 %></:col>
+  <:col :let={service} label="Email sent?"><%= service.email_sent %></:col>
+
   <:action :let={service}>
     <div class="sr-only">
       <.link navigate={~p"/services/#{service}"}>Show</.link>

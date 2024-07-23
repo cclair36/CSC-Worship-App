@@ -18,6 +18,13 @@ defmodule CscWorshipWeb.ServiceController do
     case Big.create_service(service_params) do
       {:ok, service} ->
         IO.inspect(service)
+        IO.inspect(CscWorship.Big.Service.email_list(@changeset, service))
+        if (service.email_sent == true) do
+          email_list = CscWorship.Big.Service.email_list(@changeset, service)
+          for x <- email_list do
+            IO.inspect(Map.get(x, :email, %{}))
+          end
+        end
         conn
         |> put_flash(:info, "Service created successfully.")
         |> redirect(to: ~p"/services/#{service}")

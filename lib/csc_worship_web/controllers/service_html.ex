@@ -19,6 +19,11 @@ defmodule CscWorshipWeb.ServiceHTML do
       [key: name, value: id]
     end
   end
+  def bass_dropdown(changeset) do
+    for %CscWorship.Musicians.Bassist{id: id, name: name} <- CscWorship.Musicians.list_bassists() do
+      [key: name, value: id]
+    end
+  end
   def sound_dropdown(changeset) do
     for %CscWorship.Musicians.Sound{id: id, name: name} <- CscWorship.Musicians.list_sounds() do
       [key: name, value: id]

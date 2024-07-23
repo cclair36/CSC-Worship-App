@@ -7,13 +7,14 @@
     <.input field={f[:keyboard]} type="select" options={keyboard_dropdown(@changeset)} prompt="Select person or leave blank" label= "Keyboard" />
     <.input field={f[:acoustic]} type="select" options={acoustic_dropdown(@changeset)} prompt="Select person or leave blank" label= "Acoustic" />
     <.input field={f[:electric]} type="select" options={electric_dropdown(@changeset)} prompt="Select person or leave blank" label= "Electric" />
+    <.input field={f[:drummer]} type="select" options={drummer_dropdown(@changeset)} prompt="Select person or leave blank" label= "Drummer" />
+    <.input field={f[:bassist_id]} type="select" options={bass_dropdown(@changeset)} prompt="Select person or leave blank" label= "Bass" />
     <.input field={f[:vocalist1]} type="select" options={vocalist_dropdown(@changeset)} prompt="Select person or leave blank" label= "Vocalist" />
     <.input field={f[:vocalist2]} type="select" options={vocalist_dropdown(@changeset)} prompt="Select person or leave blank" label= "Vocalist" />
     <.input field={f[:vocalist3]} type="select" options={vocalist_dropdown(@changeset)} prompt="Select person or leave blank" label= "Vocalist" />
     <.input field={f[:vocalist4]} type="select" options={vocalist_dropdown(@changeset)} prompt="Select person or leave blank" label= "Vocalist" />
     <.input field={f[:slides]} type="select" options={slides_dropdown(@changeset)} prompt="Select person or leave blank" label= "Slides" />
     <.input field={f[:sound]} type="select" options={sound_dropdown(@changeset)} prompt="Select person or leave blank" label= "Sound" />
-    <.input field={f[:drummer]} type="select" options={drummer_dropdown(@changeset)} prompt="Select person or leave blank" label= "Drummer" />
     <.input 
     field={f[:songs]}
     type="select"
@@ -24,7 +25,10 @@
   <.input field={f[:notes]} type="text" label="Notes" />
   <.input field={f[:submitter]} type="text" label="Submitter" />
   <.input field={f[:rehearsal_time1]} type="datetime-local" label="Rehearsal time1" />
-  <.input field={f[:rehearsal_time_2]} type="datetime-local" label="Rehearsal time 2" />  <:actions>
+  <.input field={f[:rehearsal_time_2]} type="datetime-local" label="Rehearsal time 2" />  
+  <.input field={f[:email_sent]} type="checkbox" label="Clicking this box and saving the form will send an info email to all participants. If you are updating the service, please uncheck this box." />  
+  <.input field={f[:updated]} type="checkbox" label="Only click this box if you have changed a participant or a rehearsal time. If this applies, please UNCHECK the box above." />  
+  <:actions>
     <.button>Save Service</.button>
   </:actions>
 </.simple_form>

@@ -20,7 +20,9 @@ defmodule CscWorship.Big.Service do
     belongs_to :slide, CscWorship.Musicians.Slide, foreign_key: :slides
     belongs_to :sounds, CscWorship.Musicians.Sound, foreign_key: :sound
     belongs_to :speakers, CscWorship.Musicians.Speaker, foreign_key: :preacher
-    belongs_to :bassist, CSCWorship.Musicians.Bassist, foreign_key: :bassist_id
+    belongs_to :bassist, CscWorship.Musicians.Bassist, foreign_key: :bassist_id
+    field :email_sent, :boolean
+    field :updated, :boolean
 
     timestamps(type: :utc_datetime)
   end
@@ -41,10 +43,11 @@ defmodule CscWorship.Big.Service do
     |> foreign_key_constraint(:slides)
     |> foreign_key_constraint(:sound)
     |> foreign_key_constraint(:preacher)
+    |> foreign_key_constraint(:bassist_id)
   end
 
     def email_list(_changeset, attrs) do
       special_fields = Map.take(attrs, [:drummers, :keyboards, :bassist, :acoustics, :electrics, :vocalists1, :vocalists4, :vocalists2, :vocalists3, :speakers, :slide, :sounds])
-      special_fields
+      IO.inspect(special_fields)
     end
   end
