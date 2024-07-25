@@ -1,5 +1,5 @@
 <.header>
-  Service <%= @service.id %>
+  Service <%= String.slice(to_string(@service.date), 5..7) <> String.slice(to_string(@service.date), 8..9) <> "-" <> String.slice(to_string(@service.date), 0..3) %>
   <:subtitle>This is a service record from your database.</:subtitle>
   <:actions>
     <.link href={~p"/services/#{@service}/edit"}>
@@ -26,6 +26,7 @@ CscWorship.Mailer.deliver(email) %> --%>
   <:item title="Vocalist 4"> <%= if @service.vocalists4 == nil, do: "N/A", else: @service.vocalists4.name %> </:item>
   <:item title="Slides"> <%= if @service.slide == nil, do: "N/A", else: @service.slide.name %> </:item>
   <:item title="Sound"> <%= if @service.sounds == nil, do: "N/A", else: @service.sounds.name %> </:item>
+  <:item title="Sound 2"> <%= if @service.sounds2 == nil, do: "N/A", else: @service.sounds2.name %> </:item>
   <:item title="Notes"><%= @service.notes %></:item>
 </.list>
 

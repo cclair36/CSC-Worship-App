@@ -11,7 +11,7 @@
   <:col :let={service} label="Date"><%= service.date %></:col>
   <:col :let={service} label="Songs"><%=
    service.songs %></:col>
-  <:col :let={service} label= "Speaker"> <%= service.speakers.name %> </:col>
+  <:col :let={service} label= "Speaker"> <%= if service.speakers != nil, do: service.speakers.name %> </:col>
   <:col :let={service} label="Notes"><%= service.notes %></:col>
   <:col :let={service} label="Drummer"><%= if service.drummers != nil, do: service.drummers.name %></:col>
   <:col :let={service} label="Keys"><%= if service.keyboards != nil, do: service.keyboards.name %></:col>

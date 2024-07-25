@@ -19,6 +19,7 @@ defmodule CscWorship.Big.Service do
     belongs_to :vocalists4, CscWorship.Musicians.Vocalist, foreign_key: :vocalist4
     belongs_to :slide, CscWorship.Musicians.Slide, foreign_key: :slides
     belongs_to :sounds, CscWorship.Musicians.Sound, foreign_key: :sound
+    belongs_to :sounds2, CscWorship.Musicians.Sound, foreign_key: :sound2
     belongs_to :speakers, CscWorship.Musicians.Speaker, foreign_key: :preacher
     belongs_to :bassist, CscWorship.Musicians.Bassist, foreign_key: :bassist_id
     field :email_sent, :boolean
@@ -30,7 +31,7 @@ defmodule CscWorship.Big.Service do
   @doc false
   def changeset(service, attrs) do
     service
-    |> cast(attrs, [:songs, :notes, :submitter, :rehearsal_time1, :rehearsal_time_2, :date, :drummer, :keyboard, :electric, :acoustic, :vocalist1, :vocalist2, :vocalist3, :vocalist4, :slides, :sound, :preacher])
+    |> cast(attrs, [:songs, :notes, :submitter, :rehearsal_time1, :rehearsal_time_2, :date, :drummer, :keyboard, :electric, :acoustic, :vocalist1, :vocalist2, :vocalist3, :vocalist4, :slides, :sound, :preacher, :email_sent, :updated])
     |> validate_required([:songs, :notes, :submitter, :rehearsal_time1, :rehearsal_time_2, :date])
     |> foreign_key_constraint(:drummer)
     |> foreign_key_constraint(:keyboard)
@@ -47,7 +48,7 @@ defmodule CscWorship.Big.Service do
   end
 
     def email_list(_changeset, attrs) do
-      special_fields = Map.take(attrs, [:drummers, :keyboards, :bassist, :acoustics, :electrics, :vocalists1, :vocalists4, :vocalists2, :vocalists3, :speakers, :slide, :sounds])
+      special_fields = Map.take(attrs, [:drummers, :keyboards, :bassist, :acoustics, :electrics, :vocalists1, :vocalists4, :vocalists2, :vocalists3, :speakers, :slide, :sounds, :sounds2])
       IO.inspect(special_fields)
     end
   end

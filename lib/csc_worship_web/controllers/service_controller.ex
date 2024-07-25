@@ -18,11 +18,9 @@ defmodule CscWorshipWeb.ServiceController do
     case Big.create_service(service_params) do
       {:ok, service} ->
         IO.inspect(service)
-        IO.inspect(CscWorship.Big.Service.email_list(@changeset, service))
+        email_list = CscWorship.Big.Service.email_list(@changeset, service)
         if (service.email_sent == true) do
-          email_list = CscWorship.Big.Service.email_list(@changeset, service)
-          for x <- email_list do
-            IO.inspect(Map.get(x, :email, %{}))
+          emails = for x <- email_list do
           end
         end
         conn
@@ -47,9 +45,17 @@ defmodule CscWorshipWeb.ServiceController do
 
   def update(conn, %{"id" => id, "service" => service_params}) do
     service = Big.get_service!(id)
-
     case Big.update_service(service, service_params) do
       {:ok, service} ->
+        email_list = CscWorship.Big.Service.email_list({@changeset}, service)
+        if (service.email_sent == true) do
+          Enum.each(email_list, fn {k, v} ->
+          if k != nil do
+          email_to_send = CscWorship.Email.volunteer_notification_email(%{name: v.name, email: v.email, instrument: k, date: service.date, rehearsal1: service.rehearsal_time1, rehearsal2: service.rehearsal_time_2})
+          Swoosh.Mailer.deliver(email_to_send)
+          end
+          end)
+        end
         conn
         |> put_flash(:info, "Service updated successfully.")
         |> redirect(to: ~p"/services/#{service}")
