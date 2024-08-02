@@ -11,7 +11,7 @@
 CscWorship.Mailer.deliver(email) %> --%>
 <.list>
   <:item title="Date"><%= String.slice(to_string(@service.date), 5..7) <> String.slice(to_string(@service.date), 8..9) <> "-" <> String.slice(to_string(@service.date), 0..3) %></:item>
-  <:item title="Songs"><%= if @service.songs == nil, do: "N/A", else: @service.songs %></:item>
+  <:item title="Songs"><%= if @service.songs == nil, do: "N/A", else: for x <- @service.songs, do: x <> ", " %></:item>
   <:item title="Speaker"> <%= if @service.speakers == nil, do: "N/A", else: @service.speakers.name %> </:item>
   <:item title="Submitter"><%= @service.submitter %></:item>
   <:item title="Rehearsal time1"><%= String.slice(to_string(@service.rehearsal_time1), 5..7) <> String.slice(to_string(@service.rehearsal_time1), 8..9) <> "-" <> String.slice(to_string(@service.rehearsal_time1), 0..3) <> " at " <> String.slice(to_string(@service.rehearsal_time1), 11..13) <> String.slice(to_string(@service.rehearsal_time1), 14..15) <> String.slice(to_string(@service.rehearsal_time1), 16..18)%> </:item>

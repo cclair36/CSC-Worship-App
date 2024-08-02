@@ -15,6 +15,6 @@ defmodule CscWorship.Musicians.Acoustic do
   def changeset(acoustic, attrs) do
     acoustic
     |> cast(attrs, [:name, :dates_avaliable, :email, :times_used])
-    |> validate_required([:name, :dates_avaliable, :email])
+    |> validate_required([:name, :email])
   end
 end

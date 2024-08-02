@@ -16,6 +16,6 @@ defmodule CscWorship.Big.Song do
   def changeset(song, attrs) do
     song
     |> cast(attrs, [:name, :artist, :songselect, :youtube, :type])
-    |> validate_required([:name, :artist, :songselect, :youtube, :type])
+    |> validate_required([:name, :artist])
   end
 end

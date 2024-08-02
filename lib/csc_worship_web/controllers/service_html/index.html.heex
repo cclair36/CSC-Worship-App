@@ -8,9 +8,9 @@
 </.header>
 
 <.table id="services" rows={@services} row_click={&JS.navigate(~p"/services/#{&1}")}>
-  <:col :let={service} label="Date"><%= service.date %></:col>
-  <:col :let={service} label="Songs"><%=
-   service.songs %></:col>
+  <:col :let={service} label="Date"><%= p = to_string(service.date)
+    String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3) %></:col>
+  <:col :let={service} label="Songs"><%= for x <- service.songs, do: x <> ", " %></:col>
   <:col :let={service} label= "Speaker"> <%= if service.speakers != nil, do: service.speakers.name %> </:col>
   <:col :let={service} label="Notes"><%= service.notes %></:col>
   <:col :let={service} label="Drummer"><%= if service.drummers != nil, do: service.drummers.name %></:col>
@@ -23,8 +23,22 @@
   <:col :let={service} label="Acoustic"><%= if service.acoustics != nil, do: service.acoustics.name %></:col>
   <:col :let={service} label="Slides"><%= if service.slide != nil, do: service.slide.name %></:col>
   <:col :let={service} label="Sound"><%= if service.sounds != nil, do: service.sounds.name %></:col>
-  <:col :let={service} label="First Rehearsal"><%= service.rehearsal_time1 %></:col>
-  <:col :let={service} label="Sunday Rehearsal"><%= service.rehearsal_time_2 %></:col>
+  <:col :let={service} label="First Rehearsal"><%= p = to_string(service.rehearsal_time1)
+    day = CscWorshipWeb.ServiceController.day_of_week(service.rehearsal_time1) <> ", " <> String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3) <> ", "
+    p2 = Integer.parse(String.slice(p, 11..12))
+    if Kernel.elem(p2, 0)- 12 >= 0 do
+      day <> "at " <> to_string(Kernel.elem(p2, 0)- 12) <> String.slice(p, 13..15) <> "PM"
+    else
+     day <> "at " <> to_string(Kernel.elem(p2, 0)) <> String.slice(p, 13..15) <> "AM"
+    end %></:col>
+  <:col :let={service} label="Sunday Rehearsal"><%= p = to_string(service.rehearsal_time_2)
+    day = CscWorshipWeb.ServiceController.day_of_week(service.rehearsal_time_2) <> ", " <> String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3) <> ", "
+    p2 = Integer.parse(String.slice(p, 11..12))
+    if Kernel.elem(p2, 0)- 12 >= 0 do
+      day <> "at " <> to_string(Kernel.elem(p2, 0)- 12) <> String.slice(p, 13..15) <> "PM"
+    else
+     day <> "at " <> to_string(Kernel.elem(p2, 0)) <> String.slice(p, 13..15) <> "AM"
+    end %></:col>
   <:col :let={service} label="Email sent?"><%= service.email_sent %></:col>
 
   <:action :let={service}>

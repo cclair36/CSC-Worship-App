@@ -9,7 +9,7 @@
 
 <.table id="speakers" rows={@speakers} row_click={&JS.navigate(~p"/speakers/#{&1}")}>
   <:col :let={speaker} label="Name"><%= speaker.name %></:col>
-  <:col :let={speaker} label="Dates preaching"><%= speaker.dates_preaching %></:col>
+  <:col :let={speaker} label="Dates preaching"><%= for x <- speaker.dates_preaching, do: to_string(x) <> "," %></:col>
   <:col :let={speaker} label="Email"><%= speaker.email %></:col>
   <:action :let={speaker}>
     <div class="sr-only">

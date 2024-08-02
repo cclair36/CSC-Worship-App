@@ -69,7 +69,7 @@ config :csc_worship, dev_routes: true
 config :logger, :console, format: "[$level] $message\n"
 
 config :csc_worship, CscWorship.Mailer,
-  adapter: Swoosh.Adapters.Local
+  adapter: Swoosh.Adapters.Sendgrid
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20

@@ -84,6 +84,10 @@ defmodule CscWorship.Big do
     service
     |> Service.changeset(attrs)
     |> Repo.update()
+    |> case do
+      {:ok, post} -> {:ok, Repo.preload(post, [:drummers, :keyboards, :acoustics, :electrics, :sounds, :sounds2, :slide, :vocalists1, :vocalists2, :vocalists3, :vocalists4, :speakers, :bassist])}
+      error -> error
+    end
   end
 
   @doc """

@@ -49,6 +49,5 @@ defmodule CscWorship.Big.Service do
 
     def email_list(_changeset, attrs) do
       special_fields = Map.take(attrs, [:drummers, :keyboards, :bassist, :acoustics, :electrics, :vocalists1, :vocalists4, :vocalists2, :vocalists3, :speakers, :slide, :sounds, :sounds2])
-      IO.inspect(special_fields)
     end
   end
