@@ -11,18 +11,19 @@
   <:col :let={service} label="Date"><%= p = to_string(service.date)
     String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3) %></:col>
   <:col :let={service} label="Songs"><%= for x <- service.songs, do: x <> ", " %></:col>
-  <:col :let={service} label= "Speaker"> <%= if service.speakers != nil, do: service.speakers.name %> </:col>
+  <:col :let={service} label= "Speaker"> <%= if service.speaker != nil, do: service.speakers.name %> </:col>
   <:col :let={service} label="Notes"><%= service.notes %></:col>
-  <:col :let={service} label="Drummer"><%= if service.drummers != nil, do: service.drummers.name %></:col>
-  <:col :let={service} label="Keys"><%= if service.keyboards != nil, do: service.keyboards.name %></:col>
-  <:col :let={service} label="Vocalist"><%= if service.vocalists1 != nil, do: service.vocalists1.name %></:col>
-  <:col :let={service} label="Vocalist"><%= if service.vocalists2 != nil, do: service.vocalists2.name %></:col>
-  <:col :let={service} label="Vocalist"><%= if service.vocalists3 != nil, do: service.vocalists3.name %></:col>
-  <:col :let={service} label="Vocalist"><%= if service.vocalists4 != nil, do: service.vocalists4.name %></:col>
-  <:col :let={service} label="Electric/Lead"><%= if service.electrics != nil, do: service.electrics.name %></:col>
-  <:col :let={service} label="Acoustic"><%= if service.acoustics != nil, do: service.acoustics.name %></:col>
-  <:col :let={service} label="Slides"><%= if service.slide != nil, do: service.slide.name %></:col>
+  <:col :let={service} label="Drummer"><%= if service.drums != nil, do: service.drums.name %></:col>
+  <:col :let={service} label="Keys"><%= if service.piano != nil, do: service.piano.name %></:col>
+  <:col :let={service} label="Vocalist"><%= if service.singer != nil, do: service.singer.name %></:col>
+  <:col :let={service} label="Vocalist"><%= if service.singer2 != nil, do: service.singer2.name %></:col>
+  <:col :let={service} label="Vocalist"><%= if service.singer3 != nil, do: service.singer3.name %></:col>
+  <:col :let={service} label="Vocalist"><%= if service.singer4 != nil, do: service.singer4.name %></:col>
+  <:col :let={service} label="Electric/Lead"><%= if service.electric_guitar != nil, do: service.electric_guitar.name %></:col>
+  <:col :let={service} label="Acoustic"><%= if service.acoustic_guitar != nil, do: service.acoustic_guitar.name %></:col>
+  <:col :let={service} label="Slides"><%= if service.projection != nil, do: service.projection.name %></:col>
   <:col :let={service} label="Sound"><%= if service.sounds != nil, do: service.sounds.name %></:col>
+  <:col :let={service} label="Sound"><%= if service.sound_board != nil, do: service.sound_board.name %></:col>
   <:col :let={service} label="First Rehearsal"><%= p = to_string(service.rehearsal_time1)
     day = CscWorshipWeb.ServiceController.day_of_week(service.rehearsal_time1) <> ", " <> String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3) <> ", "
     p2 = Integer.parse(String.slice(p, 11..12))

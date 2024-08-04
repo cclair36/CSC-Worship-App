@@ -85,11 +85,13 @@ defmodule CscWorshipWeb.ServiceController do
               Kernel.elem(x, 0)
               assoc2 = Map.get(past_service, assoc, %{})
               assoc3 = Map.get(service, assoc, %{})
-              if assoc2 != %{} and assoc2.id != assoc3.id do
+              if assoc2.id != assoc3.id do
                 email1 = CscWorship.Email.volunteer_notification_email(%{name: assoc3.name, email: assoc3.email, date: service.date, notes: service.notes, instrument: assoc, rehearsal1: service.rehearsal_time1, rehearsal2: service.rehearsal_time_2, songs: service.songs})
-                email2 = CscWorship.Email.no_longer_serving(%{name: assoc2.name, email: assoc2.email, date: service.date, instrument: assoc})
+                if assoc2.id != %{} do
+                  email2 = CscWorship.Email.no_longer_serving(%{name: assoc2.name, email: assoc2.email, date: service.date, instrument: assoc})
+                  IO.inspect(CscWorship.Mailer.deliver(email2))
+                end
                 IO.inspect(CscWorship.Mailer.deliver(email1))
-               IO.inspect(CscWorship.Mailer.deliver(email2))
               end
               end
             if past_service.rehearsal_time1 != service.rehearsal_time1 do

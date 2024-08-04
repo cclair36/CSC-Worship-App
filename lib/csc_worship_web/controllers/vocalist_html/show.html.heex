@@ -10,7 +10,11 @@
 
 <.list>
   <:item title="Name"><%= @vocalist.name %></:item>
-  <:item title="Dates Unavaliable"><%= for x <- @vocalist.dates_avaliable, do: to_string(x) <> ", "  %></:item>
+  <:item title="Dates Unavaliable"><%= if @vocalist.dates_avaliable != nil do
+   for x <- @vocalist.dates_avaliable, do: to_string(x) <> ", "
+   else
+    "N/A"
+    end  %></:item>
   <:item title="Email"><%= @vocalist.email %></:item>
 </.list>
 
