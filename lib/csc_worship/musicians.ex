@@ -17,9 +17,17 @@ defmodule CscWorship.Musicians do
       [%Drummer{}, ...]
 
   """
-  def list_drummers do
-    Repo.all(Drummer)
+  def list_drummers(date2 \\nil)  do
+    if date2 != nil do
+      date = DateTime.to_date(date2)
+    query =
+      from a in Drummer,
+        where: not fragment("? @> ?", a.dates_avaliable, ^[date])
+      Repo.all(query)
+    else
+      Repo.all(Drummer)
   end
+end
 
   @doc """
   Gets a single drummer.
@@ -113,9 +121,17 @@ defmodule CscWorship.Musicians do
       [%Keyboard{}, ...]
 
   """
-  def list_keyboards do
-    Repo.all(Keyboard)
+  def list_keyboards(date2 \\nil)  do
+    if date2 != nil do
+      date = DateTime.to_date(date2)
+    query =
+      from a in Keyboard,
+        where: not fragment("? @> ?", a.dates_avaliable, ^[date])
+    Repo.all(query)
+    else
+      Repo.all(Keyboard)
   end
+end
 
   @doc """
   Gets a single keyboard.
@@ -209,8 +225,17 @@ defmodule CscWorship.Musicians do
       [%Acoustic{}, ...]
 
   """
-  def list_ac_guitar do
+  def list_ac_guitar(date2 \\ nil) do
+    if date2 != nil do
+      date = DateTime.to_date(date2)
+    query =
+      from a in Acoustic,
+        where: not fragment("? @> ?", a.dates_avaliable, ^[date])
+
+    Repo.all(query)
+    else
     Repo.all(Acoustic)
+    end
   end
 
   @doc """
@@ -305,8 +330,16 @@ defmodule CscWorship.Musicians do
       [%Electric{}, ...]
 
   """
-  def list_el_guitar do
+  def list_el_guitar(date2 \\nil)  do
+    if date2 != nil do
+      date = DateTime.to_date(date2)
+    query =
+      from a in Electric,
+        where: not fragment("? @> ?", a.dates_avaliable, ^[date])
+    Repo.all(query)
+    else
     Repo.all(Electric)
+    end
   end
 
   @doc """
@@ -401,8 +434,16 @@ defmodule CscWorship.Musicians do
       [%Vocalist{}, ...]
 
   """
-  def list_vocalists do
+  def list_vocalists(date2 \\nil)  do
+    if date2 != nil do
+      date = DateTime.to_date(date2)
+    query =
+      from a in Vocalist,
+        where: not fragment("? @> ?", a.dates_avaliable, ^[date])
+    Repo.all(query)
+    else
     Repo.all(Vocalist)
+    end
   end
 
   @doc """
@@ -497,8 +538,16 @@ defmodule CscWorship.Musicians do
       [%Slide{}, ...]
 
   """
-  def list_slides do
+  def list_slides(date2 \\nil)  do
+    if date2 != nil do
+      date = DateTime.to_date(date2)
+    query =
+      from a in Slide,
+        where: not fragment("? @> ?", a.dates_avaliable, ^[date])
+    Repo.all(query)
+    else
     Repo.all(Slide)
+    end
   end
 
   @doc """
@@ -593,8 +642,16 @@ defmodule CscWorship.Musicians do
       [%Sound{}, ...]
 
   """
-  def list_sounds do
+  def list_sounds(date2 \\nil)  do
+    if date2 != nil do
+      date = DateTime.to_date(date2)
+    query =
+      from a in Sound,
+        where: not fragment("? @> ?", a.dates_avaliable, ^[date])
+    Repo.all(query)
+    else
     Repo.all(Sound)
+    end
   end
 
   @doc """
@@ -881,8 +938,16 @@ defmodule CscWorship.Musicians do
       [%Bassist{}, ...]
 
   """
-  def list_bassists do
+  def list_bassists(date2 \\ nil) do
+    if date2 != nil do
+      date = DateTime.to_date(date2)
+    query =
+      from a in Bassist,
+        where: not fragment("? @> ?", a.dates_unavailable, ^[date])
+    Repo.all(query)
+    else
     Repo.all(Bassist)
+    end
   end
 
   @doc """

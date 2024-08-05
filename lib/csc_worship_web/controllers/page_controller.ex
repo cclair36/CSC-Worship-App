@@ -6,4 +6,8 @@ defmodule CscWorshipWeb.PageController do
     # so skip the default app layout.
     render(conn, :home)
   end
+
+ def create(conn, %{"submitdate" => date}) do
+  redirect(conn, to: Routes.service_path(conn, :new, date: date))
+end
 end

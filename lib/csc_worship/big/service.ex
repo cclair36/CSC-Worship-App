@@ -32,7 +32,7 @@ defmodule CscWorship.Big.Service do
   def changeset(service, attrs) do
     service
     |> cast(attrs, [:songs, :notes, :submitter, :rehearsal_time1, :rehearsal_time_2, :date, :drummer, :keyboard, :electric, :acoustic, :vocalist1, :vocalist2, :vocalist3, :vocalist4, :slides, :sound, :sound2, :preacher, :email_sent, :updated])
-    |> validate_required([:songs, :notes, :submitter, :rehearsal_time1, :rehearsal_time_2, :date])
+    |> validate_required([:date])
     |> foreign_key_constraint(:drummer)
     |> foreign_key_constraint(:keyboard)
     |> foreign_key_constraint(:electric)

@@ -1,0 +1,10 @@
+<div class="container mx-auto">
+  <div class="flex justify-between items-center">
+    <.simple_form :let={f} for={@changeset} action={~p"/date_form"}>
+    <.input field={f[:date]} type="date" label="Select a Date for this Service"/>
+    <:actions>
+    <.button> Search </.button>
+    </:actions>
+    </.simple_form>
+ </div>
+</div>

@@ -1,8 +1,8 @@
 <.header>
-  Edit Service <%= @service.id %>
+  Edit Service <%= String.slice(to_string(@service.date), 5..7) <> String.slice(to_string(@service.date), 8..9) <> "-" <> String.slice(to_string(@service.date), 0..3) %>
   <:subtitle>Use this form to manage service records in your database.</:subtitle>
 </.header>
 
-<.service_form changeset={@changeset} action={~p"/services/#{@service}"} />
+<.service_form changeset={@changeset} date={@date} action={~p"/services/#{@service}"} />
 
 <.back navigate={~p"/services"}>Back to services</.back>

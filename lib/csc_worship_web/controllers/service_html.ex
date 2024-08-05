@@ -14,43 +14,43 @@ defmodule CscWorshipWeb.ServiceHTML do
   def songlist() do
    CscWorship.Big.list_song_names()
   end
-  def drummer_dropdown(changeset) do
-    for %CscWorship.Musicians.Drummer{id: id, name: name} <- CscWorship.Musicians.list_drummers() do
+  def drummer_dropdown(changeset, date) do
+    for %CscWorship.Musicians.Drummer{id: id, name: name} <- CscWorship.Musicians.list_drummers(date) do
       [key: name, value: id]
     end
   end
-  def bass_dropdown(changeset) do
-    for %CscWorship.Musicians.Bassist{id: id, name: name} <- CscWorship.Musicians.list_bassists() do
+  def bass_dropdown(changeset, date) do
+    for %CscWorship.Musicians.Bassist{id: id, name: name} <- CscWorship.Musicians.list_bassists(date) do
       [key: name, value: id]
     end
   end
-  def sound_dropdown(changeset) do
-    for %CscWorship.Musicians.Sound{id: id, name: name} <- CscWorship.Musicians.list_sounds() do
+  def sound_dropdown(changeset, date) do
+    for %CscWorship.Musicians.Sound{id: id, name: name} <- CscWorship.Musicians.list_sounds(date) do
       [key: name, value: id]
     end
   end
-    def vocalist_dropdown(changeset) do
-      for %CscWorship.Musicians.Vocalist{id: id, name: name} <- CscWorship.Musicians.list_vocalists() do
+    def vocalist_dropdown(changeset, date) do
+      for %CscWorship.Musicians.Vocalist{id: id, name: name} <- CscWorship.Musicians.list_vocalists(date) do
         [key: name, value: id]
   end
 end
-def electric_dropdown(changeset) do
-  for %CscWorship.Musicians.Electric{id: id, name: name} <- CscWorship.Musicians.list_el_guitar() do
+def electric_dropdown(changeset, date) do
+  for %CscWorship.Musicians.Electric{id: id, name: name} <- CscWorship.Musicians.list_el_guitar(date) do
     [key: name, value: id]
 end
 end
-def acoustic_dropdown(changeset) do
-  for %CscWorship.Musicians.Acoustic{id: id, name: name} <- CscWorship.Musicians.list_ac_guitar() do
+def acoustic_dropdown(changeset, date) do
+  for %CscWorship.Musicians.Acoustic{id: id, name: name} <- CscWorship.Musicians.list_ac_guitar(date) do
     [key: name, value: id]
 end
 end
-def keyboard_dropdown(changeset) do
-  for %CscWorship.Musicians.Keyboard{id: id, name: name} <- CscWorship.Musicians.list_keyboards() do
+def keyboard_dropdown(changeset, date) do
+  for %CscWorship.Musicians.Keyboard{id: id, name: name} <- CscWorship.Musicians.list_keyboards(date) do
     [key: name, value: id]
 end
 end
-def slides_dropdown(changeset) do
-  for %CscWorship.Musicians.Slide{id: id, name: name} <- CscWorship.Musicians.list_slides() do
+def slides_dropdown(changese, date) do
+  for %CscWorship.Musicians.Slide{id: id, name: name} <- CscWorship.Musicians.list_slides(date) do
     [key: name, value: id]
 end
 end
@@ -59,9 +59,9 @@ def speaker_dropdown(changeset) do
     [key: name, value: id]
 end
 end
-# def bass_dropdown(changeset) do
-#   for %CscWorship.Musicians.Drummer{id: id, name: name} <- CscWorship.Musicians.list_drummers() do
-#     [key: name, value: id]
-# end
-# end
+def bass_dropdown(changeset, date) do
+  for %CscWorship.Musicians.Bassist{id: id, name: name} <- CscWorship.Musicians.list_bassists(date) do
+    [key: name, value: id]
+end
+end
 end

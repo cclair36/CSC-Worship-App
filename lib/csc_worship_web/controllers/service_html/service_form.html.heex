@@ -2,23 +2,25 @@
   <.error :if={@changeset.action}>
     Oops, something went wrong! Please check the errors below.
   </.error>
-  <.input field={f[:date]} type="datetime-local" label="Date" />
+ <.input field={f[:date]} type="datetime-local" id= "Date" label="Date" />
   <.input field={f[:preacher]} type="select" options={speaker_dropdown(@changeset)} prompt="Select speaker or leave blank" label= "Speaker" />
-    <.input field={f[:keyboard]} type="select" options={keyboard_dropdown(@changeset)} prompt="Select person or leave blank" label= "Keyboard" />
-    <.input field={f[:acoustic]} type="select" options={acoustic_dropdown(@changeset)} prompt="Select person or leave blank" label= "Acoustic" />
-    <.input field={f[:electric]} type="select" options={electric_dropdown(@changeset)} prompt="Select person or leave blank" label= "Electric" />
-    <.input field={f[:drummer]} type="select" options={drummer_dropdown(@changeset)} prompt="Select person or leave blank" label= "Drummer" />
-    <.input field={f[:bassist_id]} type="select" options={bass_dropdown(@changeset)} prompt="Select person or leave blank" label= "Bass" />
-    <.input field={f[:vocalist1]} type="select" options={vocalist_dropdown(@changeset)} prompt="Select person or leave blank" label= "Vocalist" />
-    <.input field={f[:vocalist2]} type="select" options={vocalist_dropdown(@changeset)} prompt="Select person or leave blank" label= "Vocalist" />
-    <.input field={f[:vocalist3]} type="select" options={vocalist_dropdown(@changeset)} prompt="Select person or leave blank" label= "Vocalist" />
-    <.input field={f[:vocalist4]} type="select" options={vocalist_dropdown(@changeset)} prompt="Select person or leave blank" label= "Vocalist" />
-    <.input field={f[:slides]} type="select" options={slides_dropdown(@changeset)} prompt="Select person or leave blank" label= "Slides" />
-    <.input field={f[:sound]} type="select" options={sound_dropdown(@changeset)} prompt="Select person or leave blank" label= "Sound" />
-    <.input field={f[:sound2]} type="select" options={sound_dropdown(@changeset)} prompt="Select person or leave blank" label= "Sound (optional helper)" />
-    <.input 
+    <.input field={f[:keyboard]} type="select" options={keyboard_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Keyboard" />
+    <.input field={f[:acoustic]} type="select" options={acoustic_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Acoustic" />
+    <.input field={f[:electric]} type="select" options={electric_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Electric" />
+    <.input field={f[:drummer]} type="select" options={drummer_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Drummer" />
+    <.input field={f[:bassist_id]} type="select" options={bass_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Bass" />
+    <.input field={f[:vocalist1]} type="select" options={vocalist_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Vocalist" />
+    <.input field={f[:vocalist2]} type="select" options={vocalist_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Vocalist" />
+    <.input field={f[:vocalist3]} type="select" options={vocalist_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Vocalist" />
+    <.input field={f[:vocalist4]} type="select" options={vocalist_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Vocalist" />
+    <.input field={f[:slides]} type="select" options={slides_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Slides" />
+    <.input field={f[:sound]} type="select" options={sound_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Sound" />
+    <.input field={f[:sound2]} type="select" options={sound_dropdown(@changeset, @date)} prompt="Select person or leave blank" label= "Sound (optional helper)" />
+    <input type= "text" autocomplete="off" id="filter" class="mb-2 rounded-md" placeholder="Filter Songs" /> 
+  <.input 
     field={f[:songs]}
     type="select"
+    id="songs"
     multiple
     label="Songs"
     options = {CscWorshipWeb.ServiceHTML.songlist}
@@ -33,3 +35,25 @@
     <.button>Save Service</.button>
   </:actions>
 </.simple_form>
+
+<script>
+
+const input = document.getElementById("filter");
+input.addEventListener("input", () =>{
+
+  const inputValue = input.value.toLowerCase();
+  const songs = document.getElementById("songs");
+  const songs2 = songs.options;
+  console.log(songs2)
+ for (let i = 0; i < songs2.length; i++){
+ const textItem = songs2[i].text.toLowerCase();
+  if (!textItem.includes(inputValue) && songs2[i].selected != true){
+    songs2[i].hidden = true;
+  }
+  else{
+    songs2[i].hidden = false;
+  }
+}
+})
+
+</script>

@@ -8,7 +8,7 @@
     type="select"
     multiple
     label="Dates unavailable"
-    options={[]}
+    options={[CscWorshipWeb.KeyboardHTML.date_list({@changeset})]}
   />
   <.input field={f[:email]} type="text" label="Email" />
   <.input field={f[:times_used]} type="number" label="Times used" />

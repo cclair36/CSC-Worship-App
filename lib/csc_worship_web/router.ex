@@ -13,7 +13,7 @@ defmodule CscWorshipWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
-  
+
   scope "/", CscWorshipWeb do
     pipe_through :browser
 
