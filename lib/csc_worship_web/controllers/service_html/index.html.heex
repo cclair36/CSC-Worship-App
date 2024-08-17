@@ -11,7 +11,7 @@
   <:col :let={service} label="Date"><%= p = to_string(service.date)
     String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3) %></:col>
   <:col :let={service} label="Songs"><%=  if service.songs != nil, do: for x <- service.songs, do: x <> ", " %></:col>
-  <:col :let={service} label= "Speaker"> <%= if service.speaker != nil, do: service.speakers.name %> </:col>
+  <:col :let={service} label= "Speaker"> <%= if service.speaker != nil, do: service.speaker.name %> </:col>
   <:col :let={service} label="Notes"><%= service.notes %></:col>
   <:col :let={service} label="Drummer"><%= if service.drums != nil, do: service.drums.name %></:col>
   <:col :let={service} label="Keys"><%= if service.piano != nil, do: service.piano.name %></:col>

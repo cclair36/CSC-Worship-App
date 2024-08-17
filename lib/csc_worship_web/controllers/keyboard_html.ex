@@ -12,8 +12,9 @@ defmodule CscWorshipWeb.KeyboardHTML do
   def keyboard_form(assigns)
   def date_list(_changeset) do
     p = CscWorship.Big.list_service_dates
-    Enum.map(p, fn x ->
+    p2 = Enum.map(p, fn x ->
       Date.to_string(x)
     end)
+    p2 ++ ["1969-01-01"]
   end
 end

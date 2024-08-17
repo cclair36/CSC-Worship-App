@@ -9,7 +9,7 @@
 
 <.table id="sounds" rows={@sounds} row_click={&JS.navigate(~p"/sounds/#{&1}")}>
   <:col :let={sound} label="Name"><%= sound.name %></:col>
-  <:col :let={sound} label="Dates Unavaliable"><%= for x <- sound.dates_avaliable, do: to_string(x) <> ", "  %></:col>
+  <:col :let={sound} label="Dates Unavaliable"><%= if sound.dates_avaliable != nil, do: for x <- sound.dates_avaliable, do: to_string(x) <> ", "  %></:col>
   <:col :let={sound} label="Email"><%= sound.email %></:col>
   <:action :let={sound}>
     <div class="sr-only">

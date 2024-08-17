@@ -24,6 +24,7 @@ defmodule CscWorship.Big.Service do
     belongs_to :bass, CscWorship.Musicians.Bassist, foreign_key: :bassist_id
     field :email_sent, :boolean
     field :updated, :boolean
+    field :service_order, :string
 
     timestamps(type: :utc_datetime)
   end
@@ -31,7 +32,7 @@ defmodule CscWorship.Big.Service do
   @doc false
   def changeset(service, attrs) do
     service
-    |> cast(attrs, [:songs, :notes, :submitter, :rehearsal_time1, :rehearsal_time_2, :date, :drummer, :keyboard, :electric, :acoustic, :vocalist1, :vocalist2, :vocalist3, :vocalist4, :slides, :sound, :sound2, :preacher, :email_sent, :updated])
+    |> cast(attrs, [:songs, :notes, :submitter, :service_order, :rehearsal_time1, :rehearsal_time_2, :date, :drummer, :keyboard, :electric, :acoustic, :vocalist1, :vocalist2, :vocalist3, :vocalist4, :slides, :sound, :sound2, :preacher, :email_sent, :updated])
     |> validate_required([:date])
     |> foreign_key_constraint(:drummer)
     |> foreign_key_constraint(:keyboard)

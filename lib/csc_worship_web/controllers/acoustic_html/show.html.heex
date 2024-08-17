@@ -10,7 +10,7 @@
 
 <.list>
   <:item title="Name"><%= @acoustic.name %></:item>
-  <:item title="Dates Unavaliable"><%= for x <- @acoustic.dates_avaliable, do: to_string(x) <> ", " %></:item>
+  <:item title="Dates Unavaliable"><%=if @acoustic.dates_avaliable != nil, do: for x <- @acoustic.dates_avaliable, do: to_string(x) <> ", " %></:item>
   <:item title="Email"><%= @acoustic.email %></:item>
 </.list>
 

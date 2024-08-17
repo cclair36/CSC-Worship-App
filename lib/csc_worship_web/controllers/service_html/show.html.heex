@@ -12,14 +12,15 @@ CscWorship.Mailer.deliver(email) %> --%>
 <.list>
   <:item title="Date"><%= String.slice(to_string(@service.date), 5..7) <> String.slice(to_string(@service.date), 8..9) <> "-" <> String.slice(to_string(@service.date), 0..3) %></:item>
   <:item title="Songs"><%= if @service.songs == nil, do: "N/A", else: for x <- @service.songs, do: x <> ", " %></:item>
-  <:item title="Speaker"> <%= if @service.speaker == nil, do: "N/A", else: @service.speakers.name %> </:item>
+  <:item title="Speaker"> <%= if @service.speaker == nil, do: "N/A", else: @service.speaker.name %> </:item>
   <:item title="Submitter"><%= @service.submitter %></:item>
   <:item title="Rehearsal time1"><%= String.slice(to_string(@service.rehearsal_time1), 5..7) <> String.slice(to_string(@service.rehearsal_time1), 8..9) <> "-" <> String.slice(to_string(@service.rehearsal_time1), 0..3) <> " at " <> String.slice(to_string(@service.rehearsal_time1), 11..13) <> String.slice(to_string(@service.rehearsal_time1), 14..15) <> String.slice(to_string(@service.rehearsal_time1), 16..18)%> </:item>
   <:item title="Rehearsal time 2"><%= String.slice(to_string(@service.rehearsal_time_2), 5..7) <> String.slice(to_string(@service.rehearsal_time_2), 8..9) <> "-" <> String.slice(to_string(@service.rehearsal_time_2), 0..3) <> " at " <> String.slice(to_string(@service.rehearsal_time_2), 11..13) <> String.slice(to_string(@service.rehearsal_time_2), 14..15) <> String.slice(to_string(@service.rehearsal_time_2), 16..18)%> </:item>
-  <:item title="Drummer"> <%= if @service.drums == nil, do: "N/A", else: @service.drummers.name%> </:item>
   <:item title="Acoustic"> <%= if @service.acoustic_guitar == nil, do: "N/A", else: @service.acoustic_guitar.name %> </:item>
   <:item title="Electric/Lead"> <%= if @service.electric_guitar == nil, do: "N/A", else: @service.electric_guitar.name %> </:item>
   <:item title="Keys"> <%= if @service.piano == nil, do: "N/A", else: @service.piano.name %> </:item>
+  <:item title="Bass"> <%= if @service.bass == nil, do: "N/A", else: @service.bass.name %> </:item>
+  <:item title="Drummer"> <%= if @service.drums == nil, do: "N/A", else: @service.drums.name%> </:item>
   <:item title="Vocalist 1"> <%= if @service.singer == nil, do: "N/A", else: @service.singer.name %> </:item>
   <:item title="Vocalist 2"> <%= if @service.singer2 == nil, do: "N/A", else: @service.singer2.name %> </:item>
   <:item title="Vocalist 3"> <%= if @service.singer3 == nil, do: "N/A", else: @service.singer3.name %> </:item>

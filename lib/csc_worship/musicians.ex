@@ -434,7 +434,7 @@ end
       [%Vocalist{}, ...]
 
   """
-  def list_vocalists(date2 \\nil)  do
+  def list_vocalists(date2 \\ nil)  do
     if date2 != nil do
       date = DateTime.to_date(date2)
     query =

@@ -3,6 +3,7 @@ defmodule CscWorship.Email do
 
   #email, date, time, rehearsal_time_1, rehearsal_time_2
   def volunteer_notification_email(user) do
+   email =
     new()
     |> to({user.name, user.email})
     |> from({"Cody Clair", "cr-clair@wiu.edu"})
@@ -28,6 +29,7 @@ defmodule CscWorship.Email do
     end}. </p> <p> Again, if these do not work for any reason, please tell Jenna, Cody or Elyse ASAP. </p>
     <h2> Here are the songs we are playing this week: </h2>
     <p> #{for x <- user.songs, do: "<p>" <> x <> "-" <> Map.get(CscWorship.Repo.get_by!(CscWorship.Big.Song, name: x), :youtube) <> "</p>"}</p>
+   <p> Click this link to access a step-by-step procedure of the service: #{user.doc_link} </p>
     <p> <span style='font-weight:bold'>Finally, here are some important notes for this service: </span> #{user.notes} </p>
     <h1> Thank you for serving! </h1>
     <p> In Christ, the CSC Worship Leadership Team (Jenna, Cody and Elyse) </p>
@@ -52,15 +54,18 @@ defmodule CscWorship.Email do
       }
       . \n Again, if these do not work for any reason, please tell Jenna, Cody or Elyse ASAP. \n  Here are the songs we are playing this week: \n
       #{for x <- user.songs, do: x <> "\n"}
+       Click this link to access a step-by-step procedure of the service: #{user.doc_link} \n
       Finally, here are some important notes for this week's service: #{user.notes}
        Thank you for serving! \n In Christ, the CSC Worship Leadership Team (Jenna, Cody and Elyse)
     ")
-   |> attachment(%Swoosh.Attachment{
-      path: "C:/Users/codyc/Downloads/#{p = to_string(user.date)
-      String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3)}.png",
-      filename: "#{user.date}.png",
-     cid: "rehearsal_info",
-   })
+  #  if user.file != "booty" do
+  #  attachment(email, %Swoosh.Attachment{
+  #     #path: "C:/Users/Resident/Desktop/photos/Worship team snapshots/#{user.file}",
+  #     path: "C:/Users/codyc/Downloads/#{user.file}",
+  #     filename: "#{user.date}.png",
+  #    cid: "rehearsal_info",
+  #  })
+  #  end
   end
 
   def rehearsal_update_email(user) do
@@ -117,7 +122,7 @@ defmodule CscWorship.Email do
       new()
       |> to({user.name, user.email})
       |> from({"Cody Clair", "cr-clair@wiu.edu"})
-      # |> cc({"Avery Le'Jeune", "lejeuneavery@gmail.com"})
+      |> cc([{"Jenna Bloodworth, jc-bloodworth@wiu.edu"}, {"Elyse Hutchins", "em-hutchins@wiu.edu"}])
       |> subject("CSC Worship: You are no longer serving this week!")
       |> html_body("<p> This email is to inform you that you are no longer scheduled for '#{to_string(user.instrument)}' on #{p = to_string(user.date)
       String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3)} at CSC. </p> <h3> If there is anything else we can do, please let us know! God bless. </h3> <p> In Christ, the CSC Worship Leadership Team (Jenna, Cody and Elyse) </p>")

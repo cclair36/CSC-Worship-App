@@ -27,8 +27,10 @@
   />
   <.input field={f[:notes]} type="text" label="Notes" />
   <.input field={f[:submitter]} type="text" label="Submitter" />
+  <.input field={f[:service_order]} type="text" label="Google Doc Link for Service Order" />
   <.input field={f[:rehearsal_time1]} type="datetime-local" label="Rehearsal time1" />
   <.input field={f[:rehearsal_time_2]} type="datetime-local" label="Rehearsal time 2" />  
+  <.input field={f[:people]} type="file" label="Attatch a picture of the list of people" />  
   <.input field={f[:email_sent]} type="checkbox" label="Clicking this box and saving the form will send an info email to all participants. If you are updating the service, please uncheck this box." />  
   <.input field={f[:updated]} type="checkbox" label="Only click this box if you have changed a participant or a rehearsal time and want to send an email denoting that. If this applies, please UNCHECK the box above." />  
   <:actions>

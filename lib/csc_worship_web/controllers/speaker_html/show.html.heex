@@ -10,7 +10,7 @@
 
 <.list>
   <:item title="Name"><%= @speaker.name %></:item>
-  <:item title="Dates preaching"><%=  for x <- @speaker.dates_preaching, do: to_string(x) %></:item>
+  <:item title="Dates preaching"><%=  if @speaker.dates_preaching != nil, do: for x <- @speaker.dates_preaching, do: to_string(x) %></:item>
   <:item title="Email"><%= @speaker.email %></:item>
 </.list>
 
