@@ -6,6 +6,7 @@ defmodule CscWorship.Email do
     new()
     |> to({user.name, user.email})
     |> from({"Cody Clair", "cr-clair@wiu.edu"})
+    |> cc([{"Jenna Bloodworth, jc-bloodworth@wiu.edu"}, {"Elyse Hutchins", "em-hutchins@wiu.edu"}])
     |> subject("CSC Notification Email")
     |> html_body("<h1>Hello #{user.name}!</h1> <p>This is an email notifying you that you are scheduled for #{to_string(user.instrument)} on #{p = to_string(user.date)
     String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3)
@@ -57,15 +58,12 @@ defmodule CscWorship.Email do
       Finally, here are some important notes for this week's service: #{user.notes}
        Thank you for serving! \n In Christ, the CSC Worship Leadership Team (Jenna, Cody and Elyse)
     ")
-  #  if user.file != "booty" do
-  #  attachment(email, %Swoosh.Attachment{
-  #     #path: "C:/Users/Resident/Desktop/photos/Worship team snapshots/#{user.file}",
-  #     path: "C:/Users/codyc/Downloads/#{user.file}",
-  #     filename: "#{user.date}.png",
-  #    cid: "rehearsal_info",
-  #  })
-  #  end
-  end
+   |> attachment(%Swoosh.Attachment{
+      path: "C:/Users/codyc/Downloads/#{user.file}",
+      filename: "#{user.date}.png",
+     cid: "rehearsal_info",
+   })
+   end
 
   def rehearsal_update_email(user) do
     new()

@@ -9,7 +9,10 @@ defmodule CscWorship.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      build_embedded: Mix.env() == :prod,
+      include_erts: true,
+      include_src: false
     ]
   end
 
