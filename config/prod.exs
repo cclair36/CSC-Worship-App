@@ -6,7 +6,7 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :csc_worship, CscWorshipWeb.Endpoint,
-  cache_static_manifest: "priv/static/cache_manifest.json", 
+  cache_static_manifest: "priv/static/cache_manifest.json",
   force_ssl: [hsts: true]
 
 # Configures Swoosh API Client
@@ -21,6 +21,6 @@ config :logger, level: :info
 config :csc_worship, CscWorship.Repo,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-  ssl: [cacertfile: "C:/"]
+  ssl: [cacertfile: "C:/Users/codyc/Documents/CSC-Worship-App/priv/certs/ca.crt"]
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
