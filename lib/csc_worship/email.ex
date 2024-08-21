@@ -3,7 +3,6 @@ defmodule CscWorship.Email do
 
   #email, date, time, rehearsal_time_1, rehearsal_time_2
   def volunteer_notification_email(user) do
-   email =
     new()
     |> to({user.name, user.email})
     |> from({"Cody Clair", "cr-clair@wiu.edu"})
