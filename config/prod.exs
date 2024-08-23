@@ -12,8 +12,7 @@ config :csc_worship, CscWorshipWeb.Endpoint,
     port: 443,
     cipher_suite: :strong,
     keyfile: Path.expand("priv/certs/server.key"),
-    certfile: Path.expand("priv/certs/server.crt"),
-    cacertfile: Path.expand("priv/certs/ca.crt"),
+    certfile: Path.expand("priv/certs/server.crt")
     # Optionally include other SSL options here
   ]
 
