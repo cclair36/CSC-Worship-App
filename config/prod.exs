@@ -7,7 +7,7 @@ import Config
 # before starting your production server.
 config :csc_worship, CscWorshipWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
-  force_ssl: [hsts: true]
+  force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: CscWorship.Finch
@@ -21,6 +21,6 @@ config :logger, level: :info
 config :csc_worship, CscWorship.Repo,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-  ssl: [cacertfile: Path.join(Application.app_dir(:csc_worship, "priv/certs"), "ca.crt")]
+  ssl: true #[cacertfile: Path.join(Application.app_dir(:csc_worship, "priv/certs"), "ca.crt")]
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
