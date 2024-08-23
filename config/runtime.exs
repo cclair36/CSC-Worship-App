@@ -68,7 +68,6 @@ if config_env() == :prod do
       cipher_suite: :strong,
       keyfile: Path.expand("priv/certs/server.key"),
       certfile: Path.expand("priv/certs/server.crt"),
-      cacertfile: Path.expand("priv/certs/ca.crt"),
     ],
     secret_key_base: secret_key_base
 
