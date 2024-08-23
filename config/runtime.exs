@@ -54,7 +54,7 @@ if config_env() == :prod do
   config :csc_worship, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
   config :csc_worship, CscWorshipWeb.Endpoint,
-    url: [host: host, port: 443, scheme: "http"],
+    url: [host: host, port: 443, scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -62,6 +62,13 @@ if config_env() == :prod do
       # for details about using IPv6 vs IPv4 and loopback vs public addresses.
       ip: {0, 0, 0, 0, 0, 0, 0, 0},
       port: port
+    ],
+    https: [
+      port: 443,
+      cipher_suite: :strong,
+      keyfile: Path.expand("priv/certs/server.key"),
+      certfile: Path.expand("priv/certs/server.crt"),
+      cacertfile: Path.expand("priv/certs/ca.crt"),
     ],
     secret_key_base: secret_key_base
 
