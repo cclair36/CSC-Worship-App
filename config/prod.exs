@@ -6,8 +6,16 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :csc_worship, CscWorshipWeb.Endpoint,
-  cache_static_manifest: "priv/static/cache_manifest.json"
-  #force_ssl: [rewrite_on: [:x_forwarded_proto]]
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  https: [
+    port: 443,
+    cipher_suite: :strong,
+    keyfile: Path.expand("priv/certs/server.key"),
+    certfile: Path.expand("priv/certs/server.crt"),
+    cacertfile: Path.expand("priv/certs/ca.crt"),
+    # Optionally include other SSL options here
+  ]
 
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: CscWorship.Finch
