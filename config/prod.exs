@@ -28,7 +28,7 @@ config :logger, level: :info
 config :csc_worship, CscWorship.Repo,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-  ssl: true #[verify: :verify_peer, cacertfile: Path.expand("priv/certs/rootCA.crt"),  keyfile: Path.expand("priv/certs/server.key"),
-  #certfile: Path.expand("priv/certs/server.crt")]
+  ssl: [verify: :verify_peer, cacertfile: Path.expand("priv/certs/rootCA.crt"),  keyfile: Path.expand("priv/certs/server.key"),
+  certfile: Path.expand("priv/certs/server.crt")]
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
