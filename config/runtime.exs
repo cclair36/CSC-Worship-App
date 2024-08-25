@@ -56,7 +56,7 @@ if config_env() == :prod do
 
   config :csc_worship, CscWorshipWeb.Endpoint,
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  url: [host: host, port: 443, scheme: "https"],
+  url: [host: host, port: 443, scheme: "http"],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
