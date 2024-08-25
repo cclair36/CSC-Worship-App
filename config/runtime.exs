@@ -32,7 +32,8 @@ if config_env() == :prod do
 
   config :csc_worship, CscWorship.Repo,
   verify: :verify_peer,
-  ssl: [cacertfile: Path.expand("priv/certs/rootCA.crt")],
+  ssl: [verify: :verify_peer, cacertfile: Path.expand("priv/certs/rootCA.crt"), keyfile: Path.expand("priv/certs/server.key"),
+  certfile: Path.expand("priv/certs/server.crt")],
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
     socket_options: maybe_ipv6
