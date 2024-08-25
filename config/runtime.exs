@@ -65,12 +65,12 @@ if config_env() == :prod do
       ip: {0, 0, 0, 0, 0, 0, 0, 0},
       port: port
     ],
-    https: [
-      port: 443,
-      cipher_suite: :strong,
-      keyfile: Path.expand("priv/certs/server.key"),
-      certfile: Path.expand("priv/certs/server.crt"),
-    ],
+    # https: [
+    #   port: 443,
+    #   cipher_suite: :strong,
+    # keyfile: Path.expand("priv/certs/server.key"),
+    #  certfile: Path.expand("priv/certs/server.crt"),
+    # ],
     secret_key_base: secret_key_base
 
   # ## SSL Support
