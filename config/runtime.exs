@@ -31,7 +31,7 @@ if config_env() == :prod do
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
   config :csc_worship, CscWorship.Repo,
-  ssl: true, #[verify: :verify_peer, cacertfile: Path.expand("priv/certs/rootCA.crt"), keyfile: Path.expand("priv/certs/server.key"),
+  ssl: true, # [verify: :verify_peer, cacertfile: Path.expand("priv/certs/rootCA.crt"), keyfile: Path.expand("priv/certs/server.key"),
  # certfile: Path.expand("priv/certs/server.crt")],
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
