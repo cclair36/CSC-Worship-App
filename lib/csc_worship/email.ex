@@ -107,13 +107,13 @@ defmodule CscWorship.Email do
      day <> "at " <> to_string(Kernel.elem(p2, 0)) <> String.slice(p, 13..15) <> "AM"
     end} \n Again, please let Jenna, Cody and Elyse know if there are any questions or concerns. \n Thank you for serving! \n In Christ, the CSC Worship Leadership Team (Jenna, Cody and Elyse)")
   end
-    def volunteer_not_email() do
+    def volunteer_not_email(user) do
       new()
-      |> to({"Cody Clair", "cr-clair@wiu.edu"})
+      |> to(user)
       |> from({"Cody Clair", "cr-clair@wiu.edu"})
       |> subject("Test")
-      |> html_body("<p> tEST </p>")
-      |> text_body("tEST")
+      |> html_body("<p> TEST </p>")
+      |> text_body("TEST")
     end
 
     def no_longer_serving(user) do
