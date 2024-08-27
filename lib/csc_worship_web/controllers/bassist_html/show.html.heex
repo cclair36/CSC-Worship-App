@@ -10,7 +10,7 @@
 
 <.list>
   <:item title="Name"><%= @bassist.name %></:item>
-  <:item title="Dates unavailable"><%=if @bassist.dates_unavailable != nil, do: for x <- @bassist.dates_unavaliable, do: x <> ", " %></:item>
+  <:item title="Dates unavailable"><%=if @bassist.dates_unavailable != nil, do: for x <- @bassist.dates_unavailable, do: to_string(x) <> ", " %></:item>
   <:item title="Email"><%= @bassist.email %></:item>
   <:item title="Times used"><%= @bassist.times_used %></:item>
 </.list>
