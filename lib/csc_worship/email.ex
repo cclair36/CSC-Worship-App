@@ -6,7 +6,6 @@ defmodule CscWorship.Email do
     new()
     |> to({user.name, user.email})
     |> from({"Cody Clair", "cr-clair@wiu.edu"})
-    |> cc([{"Jenna Bloodworth", "jc-bloodworth@wiu.edu"}, {"Elyse Hutchins", "em-hutchins@wiu.edu"}])
     |> subject("CSC Notification Email")
     |> html_body("<h1>Hello #{user.name}!</h1> <p>This is an email notifying you that you are scheduled for #{to_string(user.instrument)} on #{p = to_string(user.date)
     String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3)
