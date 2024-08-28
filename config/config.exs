@@ -33,7 +33,7 @@ config :swoosh, :api_client, Swoosh.ApiClient.Hackney
 
 config :csc_worship, CscWorship.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,
-  api_key: "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"
+  api_key: "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"
 
 # Configure esbuild (the version is required)
 config :esbuild,
