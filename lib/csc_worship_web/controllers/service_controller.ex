@@ -76,6 +76,7 @@ defmodule CscWorshipWeb.ServiceController do
     past_service = Big.get_service!(id)
     case Big.update_service(past_service, updated_params) do
       {:ok, service} ->
+        IO.inspect(service_params)
         messages = []
         email_list = CscWorship.Big.Service.email_list({@changeset}, service)
         if (service.email_sent == true) do
@@ -83,8 +84,8 @@ defmodule CscWorshipWeb.ServiceController do
             if Kernel.elem(x, 1) != nil do
             x2 = Kernel.elem(x, 1)
             x3 = CscWorship.Email.volunteer_notification_email(%{name: x2.name, file: service_params["people"], email: x2.email, doc_link: service.service_order, rehearsal1: service.rehearsal_time1, rehearsal2: service.rehearsal_time_2, instrument: Kernel.elem(x, 0), date: service.date, notes: service.notes, songs: service.songs})
-            case IO.inspect(CscWorship.Mailer.deliver(x3)) do
-              {:ok, _reason} -> ["Volunteer notification email sent successfully to " <> x2.email] ++ messages
+            case CscWorship.Mailer.deliver(x3) do
+              {:ok, _reason} -> IO.inspect("sent")#["Volunteer notification email sent successfully to " <> x2.email] ++ messages
               {:error, _reason} -> [ "Could not send volunteer notification email to " <> x2.email] ++ messages
             end
           end

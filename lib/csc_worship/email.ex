@@ -57,12 +57,11 @@ defmodule CscWorship.Email do
       Finally, here are some important notes for this week's service: #{user.notes}
        Thank you for serving! \n In Christ, the CSC Worship Leadership Team (Jenna, Cody and Elyse)
     ")
-   |> attachment(%Swoosh.Attachment{
-      path: "C:/Users/codyc/Downloads/#{p = to_string(user.date)
-      String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3)}.png",
-      filename: "#{user.date}.png",
-     cid: "rehearsal_info",
-   })
+  #  |> attachment(%Swoosh.Attachment{
+  #     path: "#{user.file}",
+  #    filename: "#{user.date}.png",
+  #    cid: "rehearsal_info",
+  #  })
    end
 
   def rehearsal_update_email(user) do
