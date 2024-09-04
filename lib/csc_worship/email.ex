@@ -118,7 +118,7 @@ defmodule CscWorship.Email do
       new()
       |> to({user.name, user.email})
       |> from({"Cody Clair", "cr-clair@wiu.edu"})
-      |> cc([{"Jenna Bloodworth", "jc-bloodworth@wiu.edu"}, {"Elyse Hutchins", "em-hutchins@wiu.edu"}])
+      #|> cc([{"Jenna Bloodworth", "jc-bloodworth@wiu.edu"}, {"Elyse Hutchins", "em-hutchins@wiu.edu"}])
       |> subject("CSC Worship: You are no longer serving this week!")
       |> html_body("<p> This email is to inform you that you are no longer scheduled for '#{to_string(user.instrument)}' on #{p = to_string(user.date)
       String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3)} at CSC. </p> <h3> If there is anything else we can do, please let us know! God bless. </h3> <p> In Christ, the CSC Worship Leadership Team (Jenna, Cody and Elyse) </p>")
