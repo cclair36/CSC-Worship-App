@@ -93,7 +93,7 @@ defmodule CscWorshipWeb.ServiceController do
         end
         if (service.updated == true) do
           for x <- email_list do
-            IO.inspect(x)
+           # IO.inspect(x)
             if Kernel.elem(x, 1) != nil do
               assoc =
               Kernel.elem(x, 0)
