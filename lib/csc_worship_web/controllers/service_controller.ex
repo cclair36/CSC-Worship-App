@@ -6,7 +6,9 @@ defmodule CscWorshipWeb.ServiceController do
 
   def index(conn, _params) do
     services = Big.list_services()
-    render(conn, :index, services: services)
+    services2 = Enum.sort_by(services, & &1.date, {:desc, DateTime})
+    IO.inspect(services2)
+    render(conn, :index, services: services2)
   end
 
   def new(conn, _params, date \\ nil) do
