@@ -34,7 +34,7 @@ defmodule CscWorship.Email do
     <p> In Christ, the CSC Worship Leadership Team (Jenna, Cody and Elyse) </p>
     ")
     |> text_body("Hello #{user.name}!\n This is an email notifying you that you are scheduled for #{to_string(user.instrument)} on #{p = to_string(user.date)
-    String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3)} at CSC. If you will be unable to fill this role, please let Jenna, Cody or Elyse know ASAP and update your availability in the office. \n
+    String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3)} at CSC. If you will be unable to fill this role, please let Jenna, Cody or Elyse know ASAP and update your availability at csc-worship-app-4.gigalixirapp.com. \n
       Our rehearsals are currently scheduled as follows: #{p = to_string(user.rehearsal1)
       day = CscWorshipWeb.ServiceController.day_of_week(user.rehearsal1) <> ", " <> String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3) <> ", "
       p2 = Integer.parse(String.slice(p, 11..12))
