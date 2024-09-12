@@ -23,7 +23,9 @@
     id="songs"
     multiple
     label="Songs"
-    options = {CscWorshipWeb.ServiceHTML.songlist}
+    options = {list = CscWorshipWeb.ServiceHTML.songlist
+    Enum.sort_by(list, & &1)
+    }
   />
   <.input field={f[:notes]} type="text" label="Notes" />
   <.input field={f[:submitter]} type="text" label="Submitter" />

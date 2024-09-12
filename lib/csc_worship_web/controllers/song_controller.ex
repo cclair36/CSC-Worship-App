@@ -6,7 +6,8 @@ defmodule CscWorshipWeb.SongController do
 
   def index(conn, _params) do
     songs = Big.list_songs()
-    render(conn, :index, songs: songs)
+    songs2 = Enum.sort_by(songs, & &1.name)
+    render(conn, :index, songs: songs2)
   end
 
   def new(conn, _params) do
