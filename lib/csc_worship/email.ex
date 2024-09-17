@@ -9,7 +9,7 @@ defmodule CscWorship.Email do
     |> subject("CSC Notification Email")
     |> html_body("<h1>Hello #{user.name}!</h1> <p>This is an email notifying you that you are scheduled for #{to_string(user.instrument)} on #{p = to_string(user.date)
     String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3)
-    } at CSC. If you will be unable to fill this role, please let Jenna, Cody or Elyse know ASAP and update your availability in the office. </p>
+    } at CSC. If you will be unable to fill this role, please let Jenna, Cody or Elyse know ASAP and update your availability at csc-worship-app-4.gigalixirapp.com </p>
     <h3> Our rehearsals are currently scheduled as follows:</h3>
     <p> #{p = to_string(user.rehearsal1)
     day = CscWorshipWeb.ServiceController.day_of_week(user.rehearsal1) <> ", " <> String.slice(p, 5..7) <> String.slice(p, 8..9) <> "-" <> String.slice(p, 0..3) <> ", "
