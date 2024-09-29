@@ -64,6 +64,25 @@ defmodule CscWorship.Email do
   #  })
    end
 
+def update_email(user) do
+  new()
+  |> to({user.name, user.email})
+  |> from({"Cody Clair", "cr-clair@wiu.edu"})
+  |> subject("CSC Worship Update Email")
+  |> html_body("<h1> Hello #{user.name}! </h1> <p> This is simply a reminder that we will have rehearsal on #{user.rehearsal1}. Please reference the notification email or contact Cody, Elyse, or Jenna with further questions or needs. <p> \n
+  Here are the songs with keys: #{keys = String.split(user.keys, ",")
+   keywordlist = Enum.zip(user.songs, keys)
+  list = Enum.map(keywordlist, fn {k, v} -> k <> " in " <> v end)
+  for x <- list, do: x <> "\n"
+  }")
+  |> text_body("Hello #{user.name}! This is simply a remidner that we will have rehearsal on #{user.rehearsal1}. Please reference the notification email or contact Cody, Elyse, or Jennawith further questions or needs.
+  Here are the songs with keys:#{keys = String.split(user.keys, ",")
+  keywordlist = Enum.zip(user.songs, keys)
+ list = Enum.map(keywordlist, fn {k, v} -> k <> " in " <> v end)
+ for x <- list, do: x <> "\n"}")
+end
+
+
   def rehearsal_update_email(user) do
     new()
     |> to({user.name, user.email})
