@@ -7,7 +7,7 @@ defmodule CscWorshipWeb.ServiceController do
   def index(conn, _params) do
     services = Big.list_services()
     services2 = Enum.sort_by(services, & &1.date, {:desc, DateTime})
-    IO.inspect(services2)
+
     render(conn, :index, services: services2)
   end
 
@@ -34,12 +34,10 @@ defmodule CscWorshipWeb.ServiceController do
     case Big.create_service(service_params) do
       {:ok, service} ->
         messages = []
-        IO.inspect(service)
         email_list = CscWorship.Big.Service.email_list(@changeset, service)
         if (service.email_sent == true) do
           for x <- email_list do
             if Kernel.elem(x, 1) != nil do
-            IO.inspect(x)
             x2 = Kernel.elem(x, 1)
             x3 = CscWorship.Email.volunteer_notification_email(%{name: x2.name, file: "booty", email: x2.email, doc_link: Map.get(service, :service_order, %{}), rehearsal1: service.rehearsal_time1, rehearsal2: service.rehearsal_time_2, instrument:  "'" <> to_string(Kernel.elem(x, 0)) <> "'", date: service.date, notes: service.notes, songs: service.songs})
             case IO.inspect(CscWorship.Mailer.deliver(x3)) do
@@ -78,7 +76,6 @@ defmodule CscWorshipWeb.ServiceController do
     past_service = Big.get_service!(id)
     case Big.update_service(past_service, updated_params) do
       {:ok, service} ->
-        IO.inspect(service_params)
         messages = []
         email_list = CscWorship.Big.Service.email_list({@changeset}, service)
         if (service.email_sent == true) do
@@ -95,15 +92,12 @@ defmodule CscWorshipWeb.ServiceController do
         end
         if (service.updated == true) do
           for x <- email_list do
-           # IO.inspect(x)
             if Kernel.elem(x, 1) != nil do
               assoc =
               Kernel.elem(x, 0)
               assoc2 = Map.get(past_service, assoc, %{})
               assoc3 = Map.get(service, assoc)
               if assoc2.id != assoc3.id and assoc3 != nil do
-                IO.inspect(assoc2)
-                IO.inspect(assoc3)
                 email1 = CscWorship.Email.volunteer_notification_email(%{name: assoc3.name, email: assoc3.email, date: service.date, doc_link: Map.get(service, :service_order, %{}), notes: service.notes, instrument: assoc, rehearsal1: service.rehearsal_time1, rehearsal2: service.rehearsal_time_2, songs: service.songs})
                 if assoc2.id != %{} do
                   email2 = CscWorship.Email.no_longer_serving(%{name: assoc2.name, email: assoc2.email, date: service.date, instrument: assoc})
