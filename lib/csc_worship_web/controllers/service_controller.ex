@@ -7,7 +7,7 @@ defmodule CscWorshipWeb.ServiceController do
   def index(conn, _params) do
     services = Big.list_services()
     services2 = Enum.sort_by(services, & &1.date, {:desc, DateTime})
-
+    IO.inspect(services)
     render(conn, :index, services: services2)
   end
 
@@ -69,12 +69,13 @@ defmodule CscWorshipWeb.ServiceController do
   end
 
   def update(conn, %{"id" => id, "service" => service_params}) do
+    IO.inspect(service_params)
     updated_params = case service_params["people"] do
       nil -> service_params
       _ -> Map.delete(service_params, service_params["people"])
     end
     past_service = Big.get_service!(id)
-    case Big.update_service(past_service, updated_params) do
+    case IO.inspect(Big.update_service(past_service, updated_params)) do
       {:ok, service} ->
         messages = []
         email_list = CscWorship.Big.Service.email_list({@changeset}, service)
