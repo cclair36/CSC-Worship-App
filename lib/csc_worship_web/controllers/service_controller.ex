@@ -75,7 +75,7 @@ defmodule CscWorshipWeb.ServiceController do
       _ -> Map.delete(service_params, service_params["people"])
     end
     past_service = Big.get_service!(id)
-    case IO.inspect(Big.update_service(past_service, updated_params)) do
+    case Big.update_service(past_service, updated_params) do
       {:ok, service} ->
         messages = []
         email_list = CscWorship.Big.Service.email_list({@changeset}, service)
