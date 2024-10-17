@@ -6,10 +6,12 @@
     </.link>
   </:actions>
 </.header>
-<div id="info" data-value= {tops = ["date~","slides~", "sound~", "songs~", "sound2~", "vocalist1~", "drummer~", "bass~", "keyboard~", "electric/lead~", "acoustic~", "rehearsal1~", "rehearsal2~"]
+<div id="info" data-value= {fields1 = (Map.take(Enum.fetch!(@services, 0), [:date, :songs, :acoustic_guitar, :electric_guitar, :piano, :bass, :drums, :singer1, :singer2, :projection, :sounds, :sound_board, :rehearsal_time1, :rehearsal_time_2, ]))
+tops = Enum.reduce(fields1, [], fn {key, _value}, acc -> [to_string(key) <> "~" | acc] end)
 mainstring = 
 for x <- @services do
 fields = (Map.take(x, [:date, :songs, :acoustic_guitar, :electric_guitar, :piano, :bass, :drums, :singer1, :singer2, :projection, :sounds, :sound_board, :rehearsal_time1, :rehearsal_time_2, ]))
+|> Enum.reverse()
 for y <- fields do 
 n = Kernel.elem(y, 1)
 case n do
@@ -35,6 +37,7 @@ end
 end
  end
 end
+tops ++ mainstring
  }hidden="true"></div>
  <a id="csv" href="#" download="" class={[
         "phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3",
