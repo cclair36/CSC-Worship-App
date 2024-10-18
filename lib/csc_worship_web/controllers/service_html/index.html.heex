@@ -6,13 +6,27 @@
     </.link>
   </:actions>
 </.header>
-<div id="info" data-value= {fields1 = (Map.take(Enum.fetch!(@services, 0), [:date, :songs, :acoustic_guitar, :electric_guitar, :piano, :bass, :drums, :singer1, :singer2, :projection, :sounds, :sound_board, :rehearsal_time1, :rehearsal_time_2, ]))
-tops = Enum.reduce(fields1, [], fn {key, _value}, acc -> [to_string(key) <> "~" | acc] end)
+<div id="info" data-value= {tops = ["date~", "songs~", "acoustic guitar~", "electric guitar~", "piano~", "drums~", "bass~", "vocals~", "also vocals~", "slides~", "sound~", "sound~", "first rehearsal~", "sunday rehearsal~", ]
 mainstring = 
 for x <- @services do
-fields = (Map.take(x, [:date, :songs, :acoustic_guitar, :electric_guitar, :piano, :bass, :drums, :singer1, :singer2, :projection, :sounds, :sound_board, :rehearsal_time1, :rehearsal_time_2, ]))
-|> Enum.reverse()
-for y <- fields do 
+fields = Map.from_struct(x)
+fields2 = [
+  {:date, fields.date},
+  {:songs, fields.songs},
+  {:acoustic_guitar, fields.acoustic_guitar},
+  {:electric_guitar, fields.electric_guitar},
+  {:piano, fields.piano},
+  {:drums, fields.drums},
+  {:bass, fields.bass},
+  {:vocalist, fields.singer},
+  {:other_vocalist, fields.singer2},
+  {:slides, fields.projection},
+  {:sound, fields.sounds},
+  {:also_sound, fields.sound_board},
+  {:first_rehearsal, fields.rehearsal_time1},
+{:sunday_rehearsal, fields.rehearsal_time_2}
+]
+for y <- fields2 do 
 n = Kernel.elem(y, 1)
 case n do
 nil -> "N/A~"
@@ -100,8 +114,8 @@ const moon = document.getElementById("info").getAttribute("data-value");
 var moon2 = moon.split("~");
 console.log(moon2)
 var moon4 = []
-for (var i = 0; i < moon2.length-1; i = i + 13){
- const moon3 = moon2.slice(i, i+13);
+for (var i = 0; i < moon2.length-1; i = i + 14){
+ const moon3 = moon2.slice(i, i+14);
  moon4.push(moon3);
 console.log(moon4);
 }
