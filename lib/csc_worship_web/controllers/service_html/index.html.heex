@@ -28,6 +28,7 @@ fields2 = [
 ]
 for y <- fields2 do 
 n = Kernel.elem(y, 1)
+IO.inspect(y)
 case n do
 nil -> "N/A~"
 %DateTime{} = datetime -> p = to_string(Kernel.elem(y, 1))
