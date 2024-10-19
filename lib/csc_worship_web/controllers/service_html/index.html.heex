@@ -42,7 +42,7 @@ day = CscWorshipWeb.ServiceController.day_of_week(Kernel.elem(y, 1)) <> " " <> S
 _ when is_list(n) ->
  n2 = Enum.with_index(n) 
  for z <- n2 do 
- if Kernel.elem(z, 1) != 4 do 
+ if Kernel.elem(z, 1) != Kernel.elem(List.last(n2), 1) do 
  Kernel.elem(z, 0) <> "-" 
  else 
  Kernel.elem(z, 0) <> "~"
