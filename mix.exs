@@ -55,6 +55,7 @@ defmodule CscWorship.MixProject do
        depth: 1},
       {:swoosh, "~> 1.5"},
       {:sendgrid, "~> 1.1"},
+      {:pbkdf2_elixir, "~> 2.0"},
       {:hackney, "~> 1.17"},
       {:gen_smtp, "~> 1.1"},
       {:finch, "~> 0.13"},
