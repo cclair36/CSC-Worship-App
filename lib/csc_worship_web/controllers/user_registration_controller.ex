@@ -6,8 +6,9 @@ defmodule CscWorshipWeb.UserRegistrationController do
   alias CscWorshipWeb.UserAuth
 
   def new(conn, _params) do
-    changeset = Accounts.change_user_registration(%User{})
-    render(conn, :new, changeset: changeset)
+    conn
+  |> put_flash(:error, "This is prohibited. If you need an account made, contact Cody.")
+  |> redirect(to: "/users/log_in") # "users/log_in")
   end
 
   def create(conn, %{"user" => user_params}) do

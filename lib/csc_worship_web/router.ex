@@ -19,7 +19,7 @@ defmodule CscWorshipWeb.Router do
   end
 
   scope "/", CscWorshipWeb do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
 
     get "/", PageController, :home
     resources "/services", ServiceController
@@ -62,7 +62,7 @@ defmodule CscWorshipWeb.Router do
 
   scope "/", CscWorshipWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
-
+    
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
     get "/users/log_in", UserSessionController, :new
