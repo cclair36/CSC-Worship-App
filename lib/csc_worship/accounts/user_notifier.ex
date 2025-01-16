@@ -8,7 +8,7 @@ defmodule CscWorship.Accounts.UserNotifier do
     email =
       new()
       |> to(recipient)
-      |> from({"CscWorship", "contact@example.com"})
+      |> from({"CscWorship", "cr-clair@wiu.edu"})
       |> subject(subject)
       |> text_body(body)
 
