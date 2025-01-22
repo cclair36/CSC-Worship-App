@@ -267,7 +267,8 @@ CREATE TABLE public.services (
     email_sent boolean,
     updated boolean,
     sound2 bigint,
-    service_order character varying(255)
+    service_order character varying(255),
+    updates boolean
 );
 
 

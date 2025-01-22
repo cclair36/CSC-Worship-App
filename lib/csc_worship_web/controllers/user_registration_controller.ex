@@ -8,7 +8,7 @@ defmodule CscWorshipWeb.UserRegistrationController do
   def new(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})
     render(conn, :new, changeset: changeset)
-    #conn
+    #conn #this is for disabling registration- to keep the bad guys out!
     #|> put_flash(:error, "This page is prohibited. Please contact Cody if you need an account made.")
     #|> redirect(to:"/users/log_in")
   end

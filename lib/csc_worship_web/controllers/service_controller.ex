@@ -78,6 +78,16 @@ defmodule CscWorshipWeb.ServiceController do
       {:ok, service} ->
         messages = []
         email_list = CscWorship.Big.Service.email_list({@changeset}, service)
+        if (service.updates == true) do
+          keys = List.last(String.split(service.notes, "~"))
+          for x <- email_list do
+           if Kernel.elem(x, 1) != nil do
+            x2 = Kernel.elem(x, 1)
+            x3 = CscWorship.Email.update_email(%{name: x2.name, rehearsal1: service.rehearsal_time1, keys: keys, email: x2.email, songs: service.songs})
+            CscWorship.Mailer.deliver(x3)
+           end
+          end
+        end
         if (service.email_sent == true) do
           for x <- email_list do
             if Kernel.elem(x, 1) != nil do

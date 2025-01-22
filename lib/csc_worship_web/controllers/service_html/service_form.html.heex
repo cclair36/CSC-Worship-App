@@ -35,6 +35,7 @@
   <.input field={f[:people]} type="file" label="Attatch a picture of the list of people" />  
   <.input field={f[:email_sent]} type="checkbox" label="Clicking this box and saving the form will send an info email to all participants. If you are updating the service, please uncheck this box." />  
   <.input field={f[:updated]} type="checkbox" label="Only click this box if you have changed a participant or a rehearsal time and want to send an email denoting that. If this applies, please UNCHECK the box above." />  
+  <.input field={f[:updates]} type="checkbox" label="Click this box to send a reminder email about an upcoming rehearsal! Make sure before you click this, the keys are listed in the proper format." />
   <:actions>
     <.button>Save Service</.button>
   </:actions>

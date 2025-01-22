@@ -629,7 +629,7 @@ ALTER TABLE ONLY public.vocalists ALTER COLUMN id SET DEFAULT nextval('public.vo
 --
 
 COPY public.ac_guitar (id, name, dates_avaliable, email, inserted_at, updated_at, times_used) FROM stdin;
-3	Jenna Bloodworth	{2024-09-01,2024-10-06}	jc-bloodworth@wiu.edu	2024-08-21 18:44:08	2024-08-26 14:39:19	1
+3	 Bloodworth	{2024-09-01,2024-10-06}	jc-bloodworth@wiu.edu	2024-08-21 18:44:08	2024-08-26 14:39:19	1
 1	Cody Clair	{2024-09-29,2024-10-27}	cr-clair@wiu.edu	2024-07-14 21:10:34	2024-08-31 19:23:01	0
 4	Nathan Tillman	{1969-01-01}	Nr-tillman@wiu.edu	2024-11-03 22:44:01	2024-11-03 22:44:01	0
 5	Luke Little	\N	Lj-little2@wiu.edu 	2024-11-12 02:27:28	2024-11-12 02:27:28	2
@@ -655,7 +655,7 @@ COPY public.bassists (id, name, dates_unavailable, email, times_used, inserted_a
 --
 
 COPY public.drummers (id, name, dates_avaliable, cajon_only, inserted_at, updated_at, email, times_used) FROM stdin;
-4	Jenna Bloodworth	{2024-09-01,2024-10-06}	t	2024-08-26 14:36:53	2024-08-26 14:39:41	jc-bloodworth@wiu.edu	0
+4	 Bloodworth	{2024-09-01,2024-10-06}	t	2024-08-26 14:36:53	2024-08-26 14:39:41	jc-bloodworth@wiu.edu	0
 1	Luke Little	{2024-09-01,2024-10-20,2024-10-27,2024-11-03}	f	2024-07-13 21:06:50	2024-08-27 19:30:49	lj-little2@wiu.edu	0
 2	Cody Clair	{2024-09-29,2024-10-27}	f	2024-07-17 21:15:38	2024-08-31 19:23:51	cr-clair@wiu.edu	1
 3	Allison Milby	{2024-10-06,2024-10-13}	t	2024-08-26 13:57:28	2024-10-10 15:56:06	ag-milby@wiu.edu	0
@@ -751,7 +751,7 @@ COPY public.slides (id, name, dates_avaliable, email, inserted_at, updated_at, t
 2	Emma Dart	{1969-01-01}	eg-dart@wiu.edu	2024-08-21 18:40:21	2024-08-21 18:40:21	1
 5	John Miller (Wednesday Nights)	\N	john@wiucsc.org	2024-08-26 14:19:19	2024-08-26 14:19:19	0
 6	Josie Mullens (Wednesday Nights) 	\N	josie@wiucsc.org	2024-08-26 14:19:39	2024-08-26 14:19:39	0
-7	Jenna Bloodworth	{2024-09-01,2024-10-06}	jc-bloodworth@wiu.edu	2024-08-26 14:38:12	2024-08-26 14:40:07	0
+7	 Bloodworth	{2024-09-01,2024-10-06}	jc-bloodworth@wiu.edu	2024-08-26 14:38:12	2024-08-26 14:40:07	0
 3	Avery Le'Jeune 	{1969-01-01}	lejeuneavery@gmail.com	2024-08-26 14:07:17	2024-08-26 15:47:36	0
 8	Emma Bird	{2024-09-01,2024-09-29,2024-10-27}	ej-bird@wiu.edu	2024-08-26 19:45:40	2024-08-26 19:45:40	0
 9	Bel Schable	{2024-09-08,2024-09-01}	il-schable@wiu.edu	2024-08-26 23:49:38	2024-08-26 23:49:38	2
@@ -890,7 +890,7 @@ COPY public.vocalists (id, name, dates_avaliable, email, inserted_at, updated_at
 2	Elyse Hutchins	{2024-08-20}	emhutchins4@gmail.com	2024-08-04 18:47:01	2024-08-06 04:08:51	0
 3	Mary Hammond	{1969-01-01}	mc-hammond2@wiu.edu	2024-08-07 19:02:12	2024-08-07 21:07:40	0
 5	Allison Milby	{2024-10-06}	ag-milby@wiu.edu	2024-08-26 13:56:50	2024-08-26 13:56:50	0
-6	Jenna Bloodworth	{2024-09-01,2024-10-06}	jc-bloodworth@wiu.edu	2024-08-26 14:37:45	2024-08-26 14:39:52	0
+6	 Bloodworth	{2024-09-01,2024-10-06}	jc-bloodworth@wiu.edu	2024-08-26 14:37:45	2024-08-26 14:39:52	0
 7	Emma Bird	{2024-09-01,2024-09-29,2024-10-27}	ej-bird@wiu.edu	2024-08-26 19:42:14	2024-08-26 19:44:04	\N
 8	Ellieana Walden	{2024-09-29}	ej-walden@wiu.edu	2024-08-27 03:01:55	2024-08-27 03:01:55	0
 10	Faith Procopio	{2024-10-06,2024-11-17}	fa-procopio@wiu.edu	2024-08-27 19:38:52	2024-08-28 01:12:40	0
