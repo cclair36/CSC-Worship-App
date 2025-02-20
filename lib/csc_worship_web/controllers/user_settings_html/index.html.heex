@@ -1,0 +1,11 @@
+<.header>
+  You Are Scheduled: 
+  <:actions>
+  </:actions>
+</.header>
+
+<.table id="serving" rows={@service_time} row_click={}>
+  <:col :let={service_time} label="Date"><%= Kernel.elem(service_time, 0) %></:col>
+<:col :let={service_time} label="Area of Service"><%= Kernel.elem(service_time, 1) %></:col>
+
+</.table>

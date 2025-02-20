@@ -6,6 +6,7 @@ defmodule CscWorshipWeb.AcousticController do
 
   def index(conn, _params) do
     ac_guitar = Musicians.list_ac_guitar()
+    IO.inspect(ac_guitar)
     render(conn, :index, ac_guitar: ac_guitar)
   end
 

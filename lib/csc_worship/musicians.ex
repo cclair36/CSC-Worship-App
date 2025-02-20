@@ -1030,4 +1030,24 @@ end
   def change_bassist(%Bassist{} = bassist, attrs \\ %{}) do
     Bassist.changeset(bassist, attrs)
   end
+
+  def find_serving_dates(current_user) do
+    list_in_services = [:piano, :acoustic_guitar, :electric_guitar, :singer1, :singer2, :singer3, :singer4, :projection, :sounds, :drums, :sound_board, :bass]
+    list_of_services = CscWorship.Big.list_services()
+    z =
+  Enum.reduce(list_of_services, [], fn service, acc ->
+    filtered_attributes =
+      Enum.filter(list_in_services, fn attribute ->
+        if Map.get(service, attribute) != nil do
+              if Map.get(Map.get(service, attribute), :email) == current_user do
+                [{DateTime.to_date(service.date), attribute}]
+                  end
+            end
+      end)
+    # Now map the filtered attributes to tuples with the date
+    acc ++ Enum.map(filtered_attributes, fn attribute ->
+      {DateTime.to_date(service.date), attribute}
+    end)
+  end)
+  end
 end

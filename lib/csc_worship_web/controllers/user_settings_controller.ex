@@ -10,10 +10,15 @@ defmodule CscWorshipWeb.UserSettingsController do
     render(conn, :edit)
   end
 
+  def index(conn, _params) do
+    x = CscWorship.Musicians.find_serving_dates(conn.assigns.current_user.email)
+    render(conn, :index, service_time: x)
+  end
+
   def update(conn, %{"action" => "update_email"} = params) do
     %{"current_password" => password, "user" => user_params} = params
     user = conn.assigns.current_user
-
+    IO.inspect(user)
     case Accounts.apply_user_email(user, password, user_params) do
       {:ok, applied_user} ->
         Accounts.deliver_user_update_email_instructions(

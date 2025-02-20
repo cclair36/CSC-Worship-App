@@ -62,7 +62,7 @@ defmodule CscWorshipWeb.Router do
 
   scope "/", CscWorshipWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
-    
+
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
     get "/users/log_in", UserSessionController, :new
@@ -77,6 +77,7 @@ defmodule CscWorshipWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/users/settings", UserSettingsController, :edit
+    get "/users/index", UserSettingsController, :index
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
   end

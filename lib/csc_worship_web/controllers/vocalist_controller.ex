@@ -6,6 +6,8 @@ defmodule CscWorshipWeb.VocalistController do
 
   def index(conn, _params) do
     vocalists = Musicians.list_vocalists()
+    x = CscWorship.Musicians.find_serving_dates(conn.assigns.current_user.email)
+    IO.inspect(x)
     render(conn, :index, vocalists: vocalists)
   end
 
