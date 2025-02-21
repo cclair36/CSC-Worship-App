@@ -1032,7 +1032,7 @@ end
   end
 
   def find_serving_dates(current_user) do
-    list_in_services = [:piano, :acoustic_guitar, :electric_guitar, :singer1, :singer2, :singer3, :singer4, :projection, :sounds, :drums, :sound_board, :bass]
+    list_in_services = [:piano, :acoustic_guitar, :electric_guitar, :vocalist1, :vocalist2, :vocalist3, :vocalist4, :projection, :sounds, :drums, :sound_board, :bass]
     list_of_services = CscWorship.Big.list_services()
     z =
   Enum.reduce(list_of_services, [], fn service, acc ->
