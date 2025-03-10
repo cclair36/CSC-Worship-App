@@ -7,7 +7,8 @@
   </:actions>
 </.header>
 
-<.table id="vocalists" rows={@vocalists} row_click={&JS.navigate(~p"/vocalists/#{&1}")}>
+<.table id="vocalists" rows={@vocalists} row_click={
+  &JS.navigate(~p"/vocalists/#{&1}")}>
   <:col :let={vocalist} label="Name"><%= vocalist.name %></:col>
   <:col :let={vocalist} label="Dates Unavaliable"><%=if vocalist.dates_avaliable != nil do
    for x <- vocalist.dates_avaliable, do: to_string(x) <> ", "

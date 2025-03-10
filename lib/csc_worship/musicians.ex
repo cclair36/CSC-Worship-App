@@ -29,6 +29,13 @@ defmodule CscWorship.Musicians do
   end
 end
 
+def get_service_by_date(date) do
+  datetime = DateTime.new!(date, ~T[17:00:00], "Etc/UTC")
+  query = from s in CscWorship.Big.Service,
+    where: s.date == ^datetime
+  service = List.first(Repo.all(query))
+  service.id
+end
   @doc """
   Gets a single drummer.
 
