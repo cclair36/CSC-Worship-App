@@ -4,11 +4,7 @@
   </:actions>
 </.header>
 
-<.table id="serving" rows={@service_time} row_click={fn {item, _atom} -> 
-IO.inspect(item)
-id = CscWorship.Musicians.get_service_by_date(item)
-JS.navigate(~p"/services/#{id}") end
-}>
+<.table id="serving" rows={@service_time} row_click={}>
   <:col :let={service_time} label="Date"><%= Kernel.elem(service_time, 0) %></:col>
 <:col :let={service_time} label="Area of Service"><%= Kernel.elem(service_time, 1) %></:col>
 
