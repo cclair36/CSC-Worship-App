@@ -12,6 +12,7 @@ defmodule CscWorshipWeb.UserSettingsController do
 
   def index(conn, _params) do
     x = CscWorship.Musicians.find_serving_dates(conn.assigns.current_user.email)
+    Enum.sort_by(x, &elem(&1, 0))
     render(conn, :index, service_time: x)
   end
 
